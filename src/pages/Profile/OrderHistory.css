@@ -1,0 +1,315 @@
+/* src/pages/Profile/OrderHistory.css */
+.order-history-page {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+}
+
+/* Header Styles */
+.orders-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 2rem 0;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+/* Bulk Actions */
+.bulk-actions-bar {
+  background: var(--primary-light);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+}
+
+.bulk-actions-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.selection-count {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.bulk-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Controls Section */
+.controls-section {
+  padding: 1.5rem 0;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Orders Section */
+.orders-section {
+  padding: 2rem 0;
+}
+
+.orders-container {
+  max-width: 100%;
+}
+
+.order-group {
+  margin-bottom: 2.5rem;
+}
+
+.group-date {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-primary);
+}
+
+.order-count {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: var(--text-secondary);
+  margin-left: 0.5rem;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Stats CTA Section */
+.stats-cta-section {
+  padding: 2rem 0;
+  background: white;
+}
+
+.stats-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+  border-radius: 12px;
+  color: white;
+}
+
+.cta-content {
+  flex: 1;
+}
+
+.cta-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cta-content p {
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.loyalty-progress {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 0.5rem;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--warning);
+  border-radius: 20px;
+  transition: width 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress-text {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0 0.5rem;
+}
+
+.cta-actions {
+  flex-shrink: 0;
+}
+
+/* Error Banner */
+.error-banner {
+  background: var(--error-light);
+  border: 1px solid var(--error);
+  padding: 1rem 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 200;
+}
+
+.error-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--error);
+}
+
+.error-icon {
+  font-size: 1.2rem;
+}
+
+.retry-button {
+  background: var(--error);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* Loading */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .stats-cta {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .bulk-actions-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .bulk-buttons {
+    justify-content: center;
+  }
+
+  .controls-section {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-header {
+    padding: 1.5rem 0;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .group-date {
+    font-size: 1.1rem;
+  }
+}
+
+/* Animation for new orders */
+@keyframes highlightNew {
+  0% {
+    background-color: var(--primary-light);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.order-card.new {
+  animation: highlightNew 2s ease-in-out;
+}
+
+/* Empty state enhancements */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-state-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.empty-state-message {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Print styles */
+@media print {
+  .bulk-actions-bar,
+  .controls-section,
+  .stats-cta-section,
+  .back-button {
+    display: none;
+  }
+
+  .order-history-page {
+    background: white;
+  }
+
+  .orders-header {
+    background: none;
+    color: black;
+    padding: 1rem 0;
+  }
+}
