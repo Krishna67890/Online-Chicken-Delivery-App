@@ -12,12 +12,10 @@ const Register = () => {
     phone: '',
     password: '',
     confirmPassword: '',
-    agreeToTerms: false,
-    marketingEmails: false
+    agreeToTerms: false
   });
-  const [loading, setLoading] = useState(false);
   
-  const { register } = useAuth();
+  const { register, loading } = useAuth();
   const { showSuccess, showError } = useNotifications();
   const navigate = useNavigate();
 
@@ -31,168 +29,68 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     if (formData.password !== formData.confirmPassword) {
       showError('Passwords do not match');
       return;
     }
-
-    if (!formData.agreeToTerms) {
-      showError('Please agree to the terms and conditions');
-      return;
-    }
-
-    setLoading(true);
-
     try {
       await register(formData);
-      showSuccess('Account created successfully! Welcome to ChickenExpress!');
+      showSuccess('Account created! Welcome to the demo.');
       navigate('/');
     } catch (error) {
       showError(error.message || 'Registration failed');
-    } finally {
-      setLoading(false);
     }
   };
 
   return (
-    <div className="auth-page">
+    <div className="auth-page demo-login-theme">
       <div className="auth-container">
+        <div className="educational-disclaimer">
+          <span className="disclaimer-icon">⚠️</span>
+          <p><strong>EDUCATIONAL PURPOSE ONLY:</strong> This website is a portfolio project. Please <strong>DO NOT</strong> enter your real personal data, credit card information, or sensitive credentials.</p>
+        </div>
+
         <div className="auth-header">
-          <h1>Create Account</h1>
-          <p>Join ChickenExpress and get 15% off your first order</p>
+          <h1>Join Demo</h1>
+          <p>Create a demo account to start exploring</p>
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
-          <div className="name-fields">
+          <div className="form-row">
             <div className="form-group">
-              <label htmlFor="firstName">First Name</label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                required
-                placeholder="First name"
-              />
+              <label>First Name</label>
+              <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <label htmlFor="lastName">Last Name</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                required
-                placeholder="Last name"
-              />
+              <label>Last Name</label>
+              <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
             </div>
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="Enter your email"
-            />
+            <label>Email Address</label>
+            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
           </div>
 
           <div className="form-group">
-            <label htmlFor="phone">Phone Number</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              placeholder="Enter your phone number"
-            />
+            <label>Password</label>
+            <input type="password" name="password" value={formData.password} onChange={handleChange} required />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              placeholder="Create a password"
-              minLength="8"
-            />
-            <small>Must be at least 8 characters</small>
+            <label>Confirm Password</label>
+            <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-              placeholder="Confirm your password"
-            />
-          </div>
-
-          <div className="form-options">
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                name="agreeToTerms"
-                checked={formData.agreeToTerms}
-                onChange={handleChange}
-              />
-              <span>I agree to the <Link to="/terms">Terms of Service</Link> and <Link to="/privacy">Privacy Policy</Link></span>
-            </label>
-            
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                name="marketingEmails"
-                checked={formData.marketingEmails}
-                onChange={handleChange}
-              />
-              <span>Send me special offers and updates</span>
-            </label>
-          </div>
-
-          <button 
-            type="submit" 
-            className="btn-primary btn-large"
-            disabled={loading}
-          >
-            {loading ? 'Creating Account...' : 'Create Account'}
+          <button type="submit" className="btn-primary btn-large" disabled={loading}>
+            {loading ? 'Creating...' : 'Sign Up for Demo'}
           </button>
         </form>
 
         <div className="auth-footer">
           <p>
-            Already have an account?{' '}
-            <Link to="/login" className="auth-link">
-              Sign in here
-            </Link>
+            Already have an account? <Link to="/auth/login" className="auth-link">Sign In</Link>
           </p>
-        </div>
-
-        <div className="benefits">
-          <h3>Join ChickenExpress and enjoy:</h3>
-          <ul>
-            <li>🎁 15% off your first order</li>
-            <li>⭐ Earn loyalty points on every order</li>
-            <li>🚚 Free delivery on orders over $25</li>
-            <li>📱 Exclusive app-only deals</li>
-          </ul>
         </div>
       </div>
     </div>

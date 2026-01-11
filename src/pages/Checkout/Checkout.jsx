@@ -1,6 +1,7 @@
 // src/pages/Checkout/Checkout.jsx
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../Contexts/CartContext';
 import CheckoutProgress from '../../components/CheckoutProgress/CheckoutProgress';
 import DeliveryForm from '../../components/DeliveryForm/DeliveryForm';
 import PaymentForm from '../../components/PaymentForm/PaymentForm';
@@ -21,7 +22,8 @@ const Checkout = () => {
       city: '',
       state: '',
       zipCode: '',
-      deliveryInstructions: ''
+      deliveryInstructions: '',
+      deliveryTime: 'asap'
     },
     payment: {
       method: 'card',
@@ -30,31 +32,35 @@ const Checkout = () => {
       cvv: '',
       nameOnCard: '',
       upiId: '',
-      cashAmount: ''
+      cashAmount: '',
+      cardType: '',
+      last4Digits: '',
+      saveCard: false
     },
-    orderNotes: ''
+    orderNotes: '',
+    specialRequests: '',
+    promoCode: '',
+    tip: 0
   });
-  const [cartItems, setCartItems] = useState([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
   const [orderId, setOrderId] = useState('');
   const navigate = useNavigate();
+  const { cartItems, clearCart } = useCart();
 
-  // Load cart items from localStorage or context
+  // Check if cart is empty
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem('chickenCart')) || [];
-    setCartItems(savedCart);
-    
-    if (savedCart.length === 0) {
+    if (cartItems.length === 0) {
       navigate('/menu');
     }
-  }, [navigate]);
+  }, [cartItems, navigate]);
 
   // Calculate order totals
   const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   const tax = subtotal * 0.08;
   const deliveryFee = subtotal > 0 ? 5.99 : 0;
-  const total = subtotal + tax + deliveryFee;
+  const tipAmount = (subtotal + tax + deliveryFee) * (orderData.tip / 100);
+  const total = subtotal + tax + deliveryFee + tipAmount;
 
   const handleDeliverySubmit = (data) => {
     setOrderData(prev => ({ ...prev, delivery: data }));
@@ -66,7 +72,61 @@ const Checkout = () => {
     setCurrentStep(3);
   };
 
+  const validateOrderData = () => {
+    const errors = [];
+    
+    // Validate delivery data
+    if (!orderData.delivery.firstName.trim()) {
+      errors.push('First name is required');
+    }
+    if (!orderData.delivery.lastName.trim()) {
+      errors.push('Last name is required');
+    }
+    if (!orderData.delivery.email.trim()) {
+      errors.push('Email is required');
+    } else if (!/\S+@\S+\.\S+/.test(orderData.delivery.email)) {
+      errors.push('Email is invalid');
+    }
+    if (!orderData.delivery.phone.trim()) {
+      errors.push('Phone number is required');
+    }
+    if (!orderData.delivery.address.trim()) {
+      errors.push('Address is required');
+    }
+    if (!orderData.delivery.city.trim()) {
+      errors.push('City is required');
+    }
+    if (!orderData.delivery.zipCode.trim()) {
+      errors.push('ZIP code is required');
+    }
+    
+    // Validate payment data if using card
+    if (orderData.payment.method === 'card') {
+      if (!orderData.payment.cardNumber.trim()) {
+        errors.push('Card number is required');
+      }
+      if (!orderData.payment.nameOnCard.trim()) {
+        errors.push('Card holder name is required');
+      }
+      if (!orderData.payment.expiryDate.trim()) {
+        errors.push('Expiry date is required');
+      }
+      if (!orderData.payment.cvv.trim()) {
+        errors.push('CVV is required');
+      }
+    }
+    
+    return errors;
+  };
+
   const handlePlaceOrder = async () => {
+    const validationErrors = validateOrderData();
+    
+    if (validationErrors.length > 0) {
+      alert(`Please fix the following errors:\n\n${validationErrors.join('\n')}`);
+      return;
+    }
+    
     setIsProcessing(true);
     
     // Simulate API call
@@ -78,12 +138,13 @@ const Checkout = () => {
       setOrderId(newOrderId);
       
       // Clear cart
-      localStorage.removeItem('chickenCart');
+      clearCart();
       
       setOrderComplete(true);
       setCurrentStep(4);
     } catch (error) {
       console.error('Order failed:', error);
+      alert('Order failed. Please try again.');
     } finally {
       setIsProcessing(false);
     }
@@ -101,7 +162,6 @@ const Checkout = () => {
       <OrderConfirmation 
         orderId={orderId}
         orderData={orderData}
-        cartItems={cartItems}
         total={total}
       />
     );
@@ -149,6 +209,7 @@ const Checkout = () => {
                     {orderData.delivery.deliveryInstructions && (
                       <p>Instructions: {orderData.delivery.deliveryInstructions}</p>
                     )}
+                    <p>Delivery Time: {orderData.delivery.deliveryTime === 'asap' ? 'As soon as possible' : `In ${orderData.delivery.deliveryTime}`}</p>
                   </div>
                   <button 
                     className="edit-btn"
@@ -164,13 +225,16 @@ const Checkout = () => {
                     <p>Method: {orderData.payment.method.toUpperCase()}</p>
                     {orderData.payment.method === 'card' && (
                       <>
-                        <p>Card: **** **** **** {orderData.payment.cardNumber.slice(-4)}</p>
+                        <p>Card: **** **** **** {orderData.payment.last4Digits || orderData.payment.cardNumber.slice(-4)}</p>
                         <p>Expires: {orderData.payment.expiryDate}</p>
                         <p>Name: {orderData.payment.nameOnCard}</p>
                       </>
                     )}
                     {orderData.payment.method === 'upi' && (
                       <p>UPI ID: {orderData.payment.upiId}</p>
+                    )}
+                    {orderData.payment.method === 'cash' && (
+                      <p>Cash: ${orderData.payment.cashAmount || 'Exact amount'}</p>
                     )}
                   </div>
                   <button 
@@ -183,15 +247,94 @@ const Checkout = () => {
 
                 <div className="review-section">
                   <h3>Order Notes</h3>
-                  <textarea
-                    placeholder="Any special instructions for your order?"
-                    value={orderData.orderNotes}
-                    onChange={(e) => setOrderData(prev => ({ 
-                      ...prev, 
-                      orderNotes: e.target.value 
-                    }))}
-                    className="notes-textarea"
-                  />
+                  <div className="review-info">
+                    <textarea
+                      placeholder="Any special instructions for your order?"
+                      value={orderData.orderNotes}
+                      onChange={(e) => setOrderData(prev => ({ 
+                        ...prev, 
+                        orderNotes: e.target.value 
+                      }))}
+                      className="notes-textarea"
+                    />
+                  </div>
+                </div>
+
+                <div className="review-section">
+                  <h3>Special Requests</h3>
+                  <div className="review-info">
+                    <textarea
+                      placeholder="Any special requests or dietary restrictions?"
+                      value={orderData.specialRequests}
+                      onChange={(e) => setOrderData(prev => ({ 
+                        ...prev, 
+                        specialRequests: e.target.value 
+                      }))}
+                      className="notes-textarea"
+                    />
+                  </div>
+                </div>
+
+                <div className="review-section">
+                  <h3>Promo Code</h3>
+                  <div className="review-info">
+                    <input
+                      type="text"
+                      placeholder="Enter promo code"
+                      value={orderData.promoCode}
+                      onChange={(e) => setOrderData(prev => ({ 
+                        ...prev, 
+                        promoCode: e.target.value 
+                      }))}
+                      className="promo-input"
+                    />
+                    <button className="apply-promo-btn">Apply</button>
+                  </div>
+                </div>
+
+                <div className="review-section">
+                  <h3>Tip</h3>
+                  <div className="review-info">
+                    <div className="tip-options">
+                      <button 
+                        className={`tip-btn ${orderData.tip === 0 ? 'active' : ''}`}
+                        onClick={() => setOrderData(prev => ({ ...prev, tip: 0 }))}
+                      >
+                        No Tip
+                      </button>
+                      <button 
+                        className={`tip-btn ${orderData.tip === 10 ? 'active' : ''}`}
+                        onClick={() => setOrderData(prev => ({ ...prev, tip: 10 }))}
+                      >
+                        10%
+                      </button>
+                      <button 
+                        className={`tip-btn ${orderData.tip === 15 ? 'active' : ''}`}
+                        onClick={() => setOrderData(prev => ({ ...prev, tip: 15 }))}
+                      >
+                        15%
+                      </button>
+                      <button 
+                        className={`tip-btn ${orderData.tip === 20 ? 'active' : ''}`}
+                        onClick={() => setOrderData(prev => ({ ...prev, tip: 20 }))}
+                      >
+                        20%
+                      </button>
+                    </div>
+                    <input
+                      type="number"
+                      placeholder="Custom tip %"
+                      value={orderData.tip}
+                      onChange={(e) => setOrderData(prev => ({ 
+                        ...prev, 
+                        tip: parseFloat(e.target.value) || 0 
+                      }))}
+                      className="tip-input"
+                      min="0"
+                      max="100"
+                      step="1"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -223,7 +366,6 @@ const Checkout = () => {
 
         <div className="checkout-sidebar">
           <OrderSummary 
-            cartItems={cartItems}
             subtotal={subtotal}
             tax={tax}
             deliveryFee={deliveryFee}

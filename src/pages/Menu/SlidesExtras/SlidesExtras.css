@@ -1,270 +1,237 @@
-/* SlidesExtras.css */
-.slides-container {
-  width: 100%;
-  height: auto;
-  position: relative;
-  transition: all 0.3s ease;
+/* Amazon-style CSS for Slides Extras Page */
+
+.slides-extras {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 20px 0;
+  color: #0f1111;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.slides-container.presenting {
-  height: 100vh;
-  background: #000;
-  position: fixed;
+.extras-header {
+  background-color: #131921;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: sticky;
   top: 0;
-  left: 0;
   z-index: 1000;
-  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.slide-wrapper {
-  width: 100%;
-  height: 100%;
+.extras-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.breadcrumb {
+  color: #ccc;
+  font-size: 14px;
+  margin: 10px 20px;
+}
+
+.breadcrumb a {
+  color: #0066c0;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.extras-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.extras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.extra-card {
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
-  overflow: hidden;
 }
 
-.slide {
+.extra-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.extra-image {
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  height: 180px;
+  background-color: #f0f2f2;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  color: white;
-  text-align: center;
-  overflow: hidden;
+  justify-content: center;
 }
 
-.slide::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-  pointer-events: none;
+.extra-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
 
-.slide.active {
-  opacity: 1;
-  transform: translateX(0);
+.extra-info {
+  padding: 15px;
 }
 
-.slide.forward {
-  transform: translateX(100%);
-}
-
-.slide.backward {
-  transform: translateX(-100%);
-}
-
-.slide-number {
-  font-size: 3rem;
+.extra-name {
   font-weight: bold;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #0f1111;
 }
 
-.slide-content {
-  font-size: 1.5rem;
-  line-height: 1.6;
-  max-width: 80%;
+.extra-description {
+  color: #565959;
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.4;
 }
 
-.controls {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+.extra-category {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 50px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  z-index: 1001;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
-.control-btn {
-  padding: 12px 16px;
+.category-icon {
+  color: #ff9900;
+  margin-right: 5px;
+}
+
+.extra-price {
+  color: #b12704;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.extra-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stars {
+  color: #ffa726;
+  margin-right: 5px;
+}
+
+.rating-value {
+  font-size: 14px;
+  color: #565959;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  background-color: #ffd814;
+  color: #0f1111;
   border: none;
-  border-radius: 50%;
+  padding: 8px 0;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
   font-weight: bold;
-  font-size: 1.2rem;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
-.control-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.add-to-cart-btn:hover {
+  background-color: #f7ca00;
 }
 
-.control-btn:not(:disabled):hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.control-btn:not(:disabled):active {
-  transform: translateY(0);
-}
-
-.control-btn.default {
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  border: 2px solid #e0e0e0;
-}
-
-.control-btn.primary {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+.extra-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #b12704;
   color: white;
-}
-
-.control-btn.success {
-  background: linear-gradient(135deg, #56ab2f, #a8e063);
-  color: white;
-}
-
-.control-btn.danger {
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
-  color: white;
-}
-
-.slide-counter {
-  display: flex;
-  align-items: center;
-  padding: 0 1rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
   font-weight: bold;
-  color: #333;
 }
 
-.slide-preview {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  z-index: 1001;
-  max-height: 60vh;
-  overflow-y: auto;
+.filters-section {
+  background: white;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.preview-title {
-  margin: 0 0 1rem 0;
-  color: #333;
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.preview-list {
+.filters-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.clear-filters {
+  color: #0066c0;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.filter-group {
+  margin-bottom: 15px;
+}
+
+.filter-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #0f1111;
+}
+
+.filter-options {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 5px;
 }
 
-.preview-item {
-  padding: 0.5rem;
-  background: #f0f0f0;
-  color: #333;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.preview-item:hover {
-  background: #e0e0e0;
+.no-extras {
+  text-align: center;
+  padding: 40px;
+  color: #565959;
+  font-size: 18px;
 }
 
-.preview-item.active {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-}
-
-.preview-item.active:hover {
-  background: linear-gradient(135deg, #5a6fd8, #6a4190);
-}
-
-/* Animations */
-@keyframes slideInFromRight {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideInFromLeft {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  .controls {
-    bottom: 1rem;
-    padding: 0.5rem;
-    gap: 0.5rem;
+  .extras-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
   }
   
-  .control-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-  
-  .slide-preview {
-    top: 1rem;
-    right: 1rem;
-    left: 1rem;
-    max-height: 40vh;
-  }
-  
-  .slide-number {
-    font-size: 2rem;
-  }
-  
-  .slide-content {
-    font-size: 1.2rem;
-    max-width: 90%;
-  }
-}
-
-@media (max-width: 480px) {
-  .slide {
-    padding: 1rem;
-  }
-  
-  .slide-number {
-    font-size: 1.5rem;
-  }
-  
-  .slide-content {
-    font-size: 1rem;
-  }
-  
-  .controls {
-    flex-wrap: wrap;
-    justify-content: center;
-    border-radius: 25px;
+  .extras-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 }

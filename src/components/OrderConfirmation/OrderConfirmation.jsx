@@ -1,21 +1,23 @@
 // src/components/OrderConfirmation/OrderConfirmation.jsx
 import React, { useEffect, useState } from 'react';
+import { useCart } from '../../Contexts/CartContext';
 import './OrderConfirmation.css';
 
 const OrderConfirmation = ({ orderDetails, onClose, onTrackOrder }) => {
   const [progress, setProgress] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
   const [showConfetti, setShowConfetti] = useState(true);
+  const { cartItems } = useCart();
 
   // Generate random order details if none provided
   const order = orderDetails || {
     id: `CHK${Math.floor(10000 + Math.random() * 90000)}`,
-    items: [
+    items: cartItems.length > 0 ? cartItems : [
       { name: 'Crispy Fried Chicken', quantity: 2, price: 12.99 },
       { name: 'French Fries', quantity: 1, price: 3.99 },
       { name: 'Coleslaw', quantity: 1, price: 2.99 }
     ],
-    total: 32.96,
+    total: cartItems.length > 0 ? cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0) : 32.96,
     deliveryAddress: '123 Main St, Anytown, USA',
     estimatedDelivery: new Date(Date.now() + 30 * 60000), // 30 minutes from now
     customerName: 'Youraj Khandhare'

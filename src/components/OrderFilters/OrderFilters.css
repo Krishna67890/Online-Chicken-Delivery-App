@@ -1,0 +1,149 @@
+/* Amazon-style CSS for Order Filters Component */
+
+.order-filters {
+  background: white;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.filters-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.clear-filters {
+  color: #0066c0;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-section {
+  margin-bottom: 15px;
+}
+
+.filter-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #0f1111;
+  font-size: 14px;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-option {
+  padding: 6px 12px;
+  background-color: #f0f2f2;
+  border: 1px solid #d5d9d9;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.filter-option:hover {
+  background-color: #e8e8e8;
+}
+
+.filter-option.selected {
+  background-color: #ffd814;
+  color: #0f1111;
+  border-color: #d9ae00;
+}
+
+.date-filter {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.date-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.range-separator {
+  display: flex;
+  align-items: center;
+  color: #565959;
+  font-size: 12px;
+}
+
+.price-filter {
+  margin: 15px 0;
+}
+
+.price-range {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.min-price, .max-price {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.apply-filters-btn {
+  width: 100%;
+  background-color: #ffd814;
+  color: #0f1111;
+  border: none;
+  padding: 10px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.apply-filters-btn:hover {
+  background-color: #f7ca00;
+}
+
+.filter-count {
+  background-color: #e7f3ff;
+  color: #0066c0;
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+  .order-filters {
+    padding: 12px;
+  }
+  
+  .date-filter {
+    flex-direction: column;
+  }
+  
+  .range-separator {
+    display: none;
+  }
+}

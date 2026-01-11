@@ -1,200 +1,184 @@
-/* DeliveryForm.css */
-.delivery-form-container {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 25px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-}
-
-.form-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.form-header h2 {
-  color: #2d3436;
-  margin: 0 0 8px 0;
-  font-size: 28px;
-  font-weight: 700;
-}
-
-.form-header p {
-  color: #636e72;
-  margin: 0;
-  font-size: 16px;
-}
+/* Amazon-style CSS for Delivery Form Component */
 
 .delivery-form {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  background: white;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.form-section {
-  padding: 25px;
-  background: #f8f9fa;
-  border-radius: 12px;
-  border-left: 4px solid #ff7e5f;
-}
-
-.form-section h3 {
-  margin: 0 0 20px 0;
-  color: #2d3436;
+.form-title {
   font-size: 18px;
-  font-weight: 600;
-}
-
-.form-row {
-  display: flex;
-  gap: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #0f1111;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
 .form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #0f1111;
+  font-size: 14px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #0066c0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.instructions {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #565959;
+}
+
+.instructions textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 60px;
+}
+
+.delivery-options {
+  margin: 20px 0;
+}
+
+.option {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.option:hover {
+  border-color: #0066c0;
+}
+
+.option.selected {
+  border-color: #0066c0;
+  background-color: #f0f7ff;
+}
+
+.option-radio {
+  margin-right: 10px;
+}
+
+.option-details {
   flex: 1;
 }
 
-.form-group label {
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #2d3436;
-  font-size: 14px;
+.option-title {
+  font-weight: bold;
+  color: #0f1111;
+  margin-bottom: 3px;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 14px 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  background: white;
+.option-description {
+  font-size: 12px;
+  color: #565959;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #ff7e5f;
-  box-shadow: 0 0 0 3px rgba(255, 126, 95, 0.2);
+.option-price {
+  font-weight: bold;
+  color: #b12704;
 }
 
-.form-group input.error,
-.form-group select.error,
-.form-group textarea.error {
-  border-color: #e74c3c;
-}
-
-.error-text {
-  color: #e74c3c;
-  font-size: 14px;
-  margin-top: 6px;
-  font-weight: 500;
-}
-
-.submit-button {
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  color: white;
-  border: none;
-  padding: 16px 24px;
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.form-actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  box-shadow: 0 4px 12px rgba(255, 126, 95, 0.3);
+  gap: 15px;
+  margin-top: 25px;
 }
 
-.submit-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 126, 95, 0.4);
+.submit-btn, .cancel-btn {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
-.submit-button:active {
-  transform: translateY(0);
+.submit-btn {
+  background-color: #ffd814;
+  color: #0f1111;
 }
 
-.submit-button:disabled {
-  opacity: 0.8;
+.submit-btn:hover {
+  background-color: #f7ca00;
+}
+
+.submit-btn:disabled {
+  background-color: #d5d9d9;
   cursor: not-allowed;
-  transform: none;
 }
 
-.submit-button.submitting {
-  background: linear-gradient(135deg, #a0a0a0, #c0c0c0);
+.cancel-btn {
+  background-color: #f0f2f2;
+  color: #0f1111;
 }
 
-.spinner {
-  width: 18px;
-  height: 18px;
-  border: 2px solid transparent;
-  border-top: 2px solid white;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.cancel-btn:hover {
+  background-color: #e8e8e8;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.error-message {
+  color: #d12600;
+  font-size: 12px;
+  margin-top: 5px;
 }
 
-/* Responsive Design */
+.success-message {
+  color: #2e7d32;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
 @media (max-width: 768px) {
-  .delivery-form-container {
-    padding: 15px;
-    margin: 10px;
-  }
-  
   .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-actions {
     flex-direction: column;
-    gap: 0;
   }
-  
-  .form-section {
-    padding: 20px 15px;
-  }
-  
-  .submit-button {
-    padding: 14px 20px;
-    font-size: 16px;
-  }
-}
-
-/* Animation for form sections */
-.form-section {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Style for required field asterisk */
-.form-group label:after {
-  content: ' *';
-  color: #e74c3c;
-}
-
-/* Remove asterisk for optional fields */
-.form-group:has(#apartment) label:after,
-.form-group:has(#deliveryInstructions) label:after,
-.form-group:has(#deliveryTime) label:after {
-  content: '';
 }

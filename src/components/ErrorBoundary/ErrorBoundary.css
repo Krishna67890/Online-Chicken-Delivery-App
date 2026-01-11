@@ -1,0 +1,103 @@
+/* Error Boundary Component Styles - Amazon-style */
+
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 40px 20px;
+}
+
+.error-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 40px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #d5d9d9;
+}
+
+.error-icon {
+  font-size: 64px;
+  color: #dc3545;
+  margin-bottom: 20px;
+}
+
+.error-title {
+  font-size: 24px;
+  color: #0f1111;
+  margin: 0 0 15px 0;
+}
+
+.error-message {
+  color: #565959;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.error-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.error-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.error-btn.primary {
+  background-color: #ff9900;
+  color: #131921;
+}
+
+.error-btn.primary:hover {
+  background-color: #f7ca00;
+}
+
+.error-btn.secondary {
+  background-color: #e7e9ea;
+  color: #111;
+  border: 1px solid #adb1b8;
+}
+
+.error-btn.secondary:hover {
+  background-color: #d5d9d9;
+}
+
+.error-details {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 20px;
+  text-align: left;
+  font-family: monospace;
+  font-size: 14px;
+  color: #dc3545;
+  max-height: 200px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.error-details summary {
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.error-details pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}

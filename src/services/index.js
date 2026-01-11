@@ -11,6 +11,7 @@ export { trackingService } from './trackingService';
 export { notificationService } from './notificationService';
 export { analyticsService } from './analyticsService';
 export { storageService } from './storageService';
+export { cartService } from './cartService';
 
 // API exports
 export { api, createCancelToken } from './api/apiClient';

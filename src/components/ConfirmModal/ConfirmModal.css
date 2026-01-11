@@ -1,0 +1,152 @@
+/* Amazon-style CSS for Confirm Modal Component */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 4px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #565959;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+  background-color: #f0f2f2;
+}
+
+.modal-body {
+  margin-bottom: 20px;
+}
+
+.modal-message {
+  color: #565959;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.warning-icon {
+  color: #d18700;
+  font-size: 24px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.confirm-btn, .cancel-btn {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.confirm-btn {
+  background-color: #d12600;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background-color: #a51d00;
+}
+
+.confirm-btn:disabled {
+  background-color: #d5d9d9;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background-color: #f0f2f2;
+  color: #0f1111;
+}
+
+.cancel-btn:hover {
+  background-color: #e8e8e8;
+}
+
+.danger-action .modal-title {
+  color: #d12600;
+}
+
+.danger-action .confirm-btn {
+  background-color: #ffd8bf;
+  color: #d12600;
+}
+
+.danger-action .confirm-btn:hover {
+  background-color: #ffcabf;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+}

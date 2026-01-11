@@ -1,0 +1,66 @@
+/* Order Stats Component Styles - Amazon-style */
+
+.order-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #d5d9d9;
+  text-align: center;
+}
+
+.stat-icon {
+  font-size: 32px;
+  color: #ff9900;
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #0f1111;
+  margin: 0 0 5px 0;
+}
+
+.stat-label {
+  color: #565959;
+  font-size: 14px;
+  margin: 0;
+}
+
+.stat-change {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.stat-change.positive {
+  color: #28a745;
+}
+
+.stat-change.negative {
+  color: #dc3545;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .order-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .order-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-number {
+    font-size: 24px;
+  }
+}

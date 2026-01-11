@@ -1,0 +1,72 @@
+/* Amazon-style CSS for Empty State Component */
+
+.empty-state {
+  background: white;
+  border-radius: 4px;
+  padding: 40px 20px;
+  text-align: center;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  color: #d5d9d9;
+  margin-bottom: 20px;
+}
+
+.empty-state-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0f1111;
+  margin: 0 0 10px 0;
+}
+
+.empty-state-message {
+  color: #565959;
+  font-size: 14px;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.btn-primary {
+  background-color: #ffd814;
+  color: #0f1111;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #f7ca00;
+}
+
+.btn-secondary {
+  background-color: #f0f2f2;
+  color: #0f1111;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #e8e8e8;
+}
+
+@media (max-width: 768px) {
+  .empty-state {
+    padding: 30px 15px;
+  }
+  
+  .empty-state-title {
+    font-size: 16px;
+  }
+}

@@ -1,9 +1,9 @@
 // src/Common/components/OrderSummary/OrderSummary.jsx
 import React, { useState, useEffect } from 'react';
+import { useCart } from '../../Contexts/CartContext';
 import './OrderSummary.css';
 
 const OrderSummary = ({ 
-  cartItems, 
   total, 
   deliveryInfo, 
   paymentInfo, 
@@ -20,6 +20,7 @@ const OrderSummary = ({
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [showCouponForm, setShowCouponForm] = useState(false);
   const [couponMessage, setCouponMessage] = useState('');
+  const { cartItems } = useCart();
 
   // Sample delivery fees and taxes
   const deliveryFee = 2.99;

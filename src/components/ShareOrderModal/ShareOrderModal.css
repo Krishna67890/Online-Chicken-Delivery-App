@@ -1,0 +1,210 @@
+/* Share Order Modal Component Styles - Amazon-style */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.7);
+  transition: transform 0.3s ease;
+}
+
+.modal.open .modal-content {
+  transform: scale(1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #d5d9d9;
+}
+
+.modal-title {
+  font-size: 20px;
+  color: #0f1111;
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.modal-close:hover {
+  background-color: #f0f2f2;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.share-content {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.share-icon {
+  font-size: 48px;
+  color: #ff9900;
+  margin-bottom: 15px;
+}
+
+.share-message {
+  color: #565959;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.share-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #0f1111;
+  margin-bottom: 15px;
+  font-family: inherit;
+}
+
+.share-input:focus {
+  outline: none;
+  border-color: #ff9900;
+  box-shadow: 0 0 0 2px rgba(255, 153, 0, 0.2);
+}
+
+.social-share {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.social-btn:hover {
+  transform: scale(1.1);
+}
+
+.social-btn.facebook {
+  background-color: #3b5998;
+  color: white;
+}
+
+.social-btn.twitter {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.social-btn.whatsapp {
+  background-color: #25d366;
+  color: white;
+}
+
+.social-btn.email {
+  background-color: #0072c6;
+  color: white;
+}
+
+.modal-footer {
+  padding: 20px;
+  border-top: 1px solid #d5d9d9;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border: 1px solid #d5d9d9;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-btn:hover {
+  background-color: #f0f2f2;
+}
+
+.modal-btn.primary {
+  background-color: #ff9900;
+  color: #131921;
+  border-color: #ff9900;
+}
+
+.modal-btn.primary:hover {
+  background-color: #f7ca00;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    max-height: 80vh;
+  }
+  
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 15px;
+  }
+  
+  .social-share {
+    gap: 10px;
+  }
+  
+  .social-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+}

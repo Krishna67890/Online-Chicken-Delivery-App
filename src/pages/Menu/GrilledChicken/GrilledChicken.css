@@ -1,220 +1,237 @@
-/* GrilledChicken.css */
-.grill-container {
-  padding: 2rem;
-  border-radius: 12px;
-  background-color: #2c3e50;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
+/* Amazon-style CSS for Grilled Chicken Page */
 
-.grill-container.light {
-  background-color: #ecf0f1;
-}
-
-.grill-content {
-  text-align: center;
+.grilled-chicken {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 20px 0;
+  color: #0f1111;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.grill-title {
-  color: #fff;
-  margin-bottom: 2rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #f39c12, #e67e22);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.grill-surface {
-  position: relative;
-  padding: 2rem;
-  background: linear-gradient(135deg, #95a5a6, #7f8c8d);
-  border-radius: 8px;
-  border: 2px solid #34495e;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.grill-surface.hot {
-  background: linear-gradient(135deg, #e74c3c, #c0392b);
-}
-
-.grill-surface::before {
-  content: "";
-  position: absolute;
+.grilled-chicken-header {
+  background-color: #131921;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.chicken-piece {
-  width: 120px;
-  height: 80px;
-  background: #f39c12;
-  border-radius: 8px;
-  position: relative;
-  margin: 0 auto;
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.2),
-    inset 0 2px 10px rgba(255, 255, 255, 0.1),
-    inset 0 -2px 10px rgba(0, 0, 0, 0.1);
+.grilled-chicken-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
 }
 
-.chicken-piece::before {
-  content: "";
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  right: 10%;
-  bottom: 10%;
-  background: linear-gradient(
-    45deg, 
-    rgba(255, 255, 255, 0.1) 25%, 
-    transparent 25%, 
-    transparent 50%, 
-    rgba(255, 255, 255, 0.1) 50%, 
-    rgba(255, 255, 255, 0.1) 75%, 
-    transparent 75%
-  );
-  background-size: 8px 8px;
-}
-
-/* Doneness states */
-.chicken-piece.rare { background: #e67e22; }
-.chicken-piece.medium { background: #d35400; }
-.chicken-piece.well { background: #ba4a00; }
-.chicken-piece.charred { background: #7e5100; }
-
-/* Flip animations */
-.chicken-piece.flip-even { transform: rotateY(0deg); }
-.chicken-piece.flip-odd { transform: rotateY(180deg); }
-
-/* Grill animation */
-.chicken-piece.grilling {
-  animation: grillMarks 2s infinite alternate;
-}
-
-.controls-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.control-btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
+.breadcrumb {
+  color: #ccc;
   font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  margin: 10px 20px;
 }
 
-.control-btn:disabled {
-  opacity: 0.6;
-  transform: none;
-  cursor: not-allowed;
+.breadcrumb a {
+  color: #0066c0;
+  text-decoration: none;
 }
 
-.control-btn.primary {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
+.breadcrumb a:hover {
+  text-decoration: underline;
 }
 
-.control-btn.primary:not(:disabled):hover {
-  background: linear-gradient(135deg, #2980b9, #1c6ea4);
-  transform: translateY(-2px);
+.grilled-chicken-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.control-btn.secondary {
-  background: linear-gradient(135deg, #e74c3c, #c0392b);
-  color: white;
-}
-
-.control-btn.secondary:not(:disabled):hover {
-  background: linear-gradient(135deg, #c0392b, #a93226);
-  transform: translateY(-2px);
-}
-
-.stats-panel {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.stats-title {
-  color: #fff;
-  margin: 0 0 0.5rem 0;
-}
-
-.stats-grid {
+.grilled-chicken-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  color: #ecf0f1;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
-.stat-value {
+.grill-card {
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.grill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.grill-image {
+  width: 100%;
+  height: 180px;
+  background-color: #f0f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grill-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.grill-info {
+  padding: 15px;
+}
+
+.grill-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #0f1111;
+}
+
+.grill-description {
+  color: #565959;
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.grill-preparation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.prep-icon {
+  color: #ff9900;
+  margin-right: 5px;
+}
+
+.grill-price {
+  color: #b12704;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.grill-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stars {
+  color: #ffa726;
+  margin-right: 5px;
+}
+
+.rating-value {
+  font-size: 14px;
+  color: #565959;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  background-color: #ffd814;
+  color: #0f1111;
+  border: none;
+  padding: 8px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #f7ca00;
+}
+
+.grill-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #b12704;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
   font-weight: bold;
 }
 
-.status-ready { color: #27ae60; }
-.status-grilling { color: #e74c3c; }
-
-.doneness-rare { color: #e67e22; }
-.doneness-medium { color: #d35400; }
-.doneness-well { color: #ba4a00; }
-.doneness-charred { color: #7e5100; }
-
-/* Keyframes animation */
-@keyframes grillMarks {
-  0% {
-    box-shadow: 
-      inset 0 2px 10px rgba(255, 255, 255, 0.1),
-      inset 0 -2px 10px rgba(0, 0, 0, 0.1),
-      0 0 0 rgba(0, 0, 0, 0.2);
-  }
-  100% {
-    box-shadow: 
-      inset 0 2px 10px rgba(255, 255, 255, 0.1),
-      inset 0 -2px 10px rgba(0, 0, 0, 0.1),
-      0 0 20px rgba(230, 126, 34, 0.6);
-  }
+.filters-section {
+  background: white;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Responsive design */
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.filters-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.clear-filters {
+  color: #0066c0;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.filter-group {
+  margin-bottom: 15px;
+}
+
+.filter-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #0f1111;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.no-grill {
+  text-align: center;
+  padding: 40px;
+  color: #565959;
+  font-size: 18px;
+}
+
 @media (max-width: 768px) {
-  .grill-container {
-    padding: 1rem;
+  .grilled-chicken-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
   }
   
-  .controls-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .chicken-piece {
-    width: 100px;
-    height: 60px;
-  }
-}
-
-@media (max-width: 480px) {
-  .grill-title {
-    font-size: 1.5rem;
-  }
-  
-  .control-btn {
-    padding: 10px 16px;
-    font-size: 12px;
+  .grilled-chicken-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 }

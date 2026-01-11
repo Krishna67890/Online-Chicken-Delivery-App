@@ -1,5 +1,5 @@
-import { api, buildUrl } from './api/apiClient';
-import { ENDPOINTS } from './api/endpoints';
+import { api } from './api/apiClient';
+import { ENDPOINTS, buildUrl } from './api/endpoints';
 
 export const addressService = {
   // Get user addresses

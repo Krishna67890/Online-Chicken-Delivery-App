@@ -1,292 +1,204 @@
+// src/pages/About/About.jsx
 import React, { useState, useEffect } from 'react';
 import './About.css';
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState('story');
-  const [stats, setStats] = useState([
-    { number: 0, label: 'Happy Customers', suffix: 'K+' },
-    { number: 0, label: 'Orders Delivered', suffix: 'K+' },
-    { number: 0, label: 'Cities Served', suffix: '+' },
-    { number: 0, label: 'Team Members', suffix: '+' }
-  ]);
-
-  // Animate stats counting
+  const [isVisible, setIsVisible] = useState(false);
+  
   useEffect(() => {
-    const finalStats = [25, 150, 12, 8];
-    const duration = 2000;
-    const steps = 60;
-    const stepDuration = duration / steps;
-
-    stats.forEach((_, index) => {
-      let currentStep = 0;
-      const timer = setInterval(() => {
-        currentStep++;
-        const progress = currentStep / steps;
-        const currentNumber = Math.floor(finalStats[index] * progress);
-        
-        setStats(prev => prev.map((stat, i) => 
-          i === index ? { ...stat, number: currentNumber } : stat
-        ));
-
-        if (currentStep >= steps) {
-          clearInterval(timer);
-        }
-      }, stepDuration);
-    });
+    setIsVisible(true);
   }, []);
-
-  const teamMembers = [
-    {
-      name: "Krishna Patil Rajput",
-      role: "Lead Developer & Founder",
-      image: "👨‍💻",
-      description: "Full-stack developer with 5+ years of experience in React, Node.js, and cloud technologies. Passionate about creating seamless user experiences.",
-      skills: ["React", "Node.js", "MongoDB", "AWS", "UI/UX"],
-      social: {
-        github: "https://github.com/krishna-patil",
-        linkedin: "https://linkedin.com/in/krishna-patil",
-        portfolio: "https://krishnapatil.dev"
-      }
-    },
-    {
-      name: "Noman Sayyed",
-      role: "Client & Business Strategist",
-      image: "👔",
-      description: "Visionary entrepreneur with extensive experience in food delivery services and customer-centric business models.",
-      skills: ["Business Strategy", "Marketing", "Operations", "Customer Service"],
-      social: {
-        linkedin: "https://linkedin.com/in/noman-sayyed",
-        email: "noman@chickendelivery.com"
-      }
-    }
-  ];
-
-  const features = [
-    {
-      icon: "🚀",
-      title: "Lightning Fast Delivery",
-      description: "Get your favorite chicken dishes delivered in under 30 minutes"
-    },
-    {
-      icon: "🍗",
-      title: "Premium Quality",
-      description: "100% fresh, hygienically prepared chicken with secret family recipes"
-    },
-    {
-      icon: "💰",
-      title: "Best Prices",
-      description: "Competitive pricing with regular discounts and loyalty rewards"
-    },
-    {
-      icon: "🌍",
-      title: "Eco-Friendly",
-      description: "Sustainable packaging and carbon-neutral delivery options"
-    }
-  ];
-
-  const milestones = [
-    { year: "2023", event: "Company Founded", description: "Started with a vision to revolutionize chicken delivery" },
-    { year: "2024", event: "App Launch", description: "Launched our React-based delivery platform" },
-    { year: "2024", event: "10K Customers", description: "Reached milestone of 10,000 happy customers" },
-    { year: "2025", event: "National Expansion", description: "Expanding to 5 new cities nationwide" }
-  ];
-
+  
   return (
-    <div className="about-container">
+    <div className="about-page">
+      
       {/* Hero Section */}
       <section className="about-hero">
-        <div className="hero-content">
-          <h1 className="hero-title">
-            Serving <span className="highlight">Delicious Chicken</span> 
-            <br />With Love & Technology
-          </h1>
-          <p className="hero-subtitle">
-            Founded by Krishna Patil Rajput and backed by Noman Sayyed's vision, 
-            we're revolutionizing how you experience chicken delivery.
-          </p>
-          <div className="hero-buttons">
-            <button className="btn-primary">Order Now</button>
-            <button className="btn-secondary">View Menu</button>
+        <div className="container">
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1 className="hero-title">Our Chicken Story</h1>
+              <p className="hero-subtitle">
+                From farm to table, we've been serving the most delicious chicken since 2010
+              </p>
+              <div className="hero-stats">
+                <div className="stat">
+                  <span className="stat-number">10+</span>
+                  <span className="stat-label">Years of Excellence</span>
+                </div>
+                <div className="stat">
+                  <span className="stat-number">50K+</span>
+                  <span className="stat-label">Happy Customers</span>
+                </div>
+                <div className="stat">
+                  <span className="stat-number">1M+</span>
+                  <span className="stat-label">Chicken Wings Served</span>
+                </div>
+              </div>
+            </div>
+            <div className="hero-image">
+              <img 
+                src="https://images.unsplash.com/photo-1606755965493-7e24a24e63c9?w=600&h=400&fit=crop" 
+                alt="Our delicious chicken" 
+              />
+            </div>
           </div>
         </div>
-        <div className="hero-visual">
-          <div className="floating-chicken">🍗</div>
-          <div className="floating-wing">🍗</div>
-          <div className="floating-burger">🍔</div>
+      </section>
+
+      {/* Our Story */}
+      <section className="about-story">
+        <div className="container">
+          <div className="story-content">
+            <div className="story-text">
+              <h2>Our Story</h2>
+              <p>
+                Founded in 2010 by passionate chicken enthusiasts, Chicken Delight started as a small family-owned restaurant 
+                with a simple mission: to serve the most delicious, perfectly seasoned chicken in town. What began as a 
+                humble 20-seat eatery has grown into a beloved chain known for our signature recipes and commitment 
+                to quality.
+              </p>
+              <p>
+                Today, we use only the finest, antibiotic-free chicken sourced from trusted farms. Our recipes are 
+                carefully crafted and tested to ensure every bite delivers the perfect balance of flavor, juiciness, 
+                and that satisfying crunch you crave.
+              </p>
+            </div>
+            <div className="story-image">
+              <img 
+                src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&h=400&fit=crop" 
+                alt="Our founder's story" 
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="stats-section">
-        <div className="stats-grid">
-          {stats.map((stat, index) => (
-            <div key={index} className="stat-item">
-              <div className="stat-number">
-                {stat.number}{stat.suffix}
-              </div>
-              <div className="stat-label">{stat.label}</div>
+      {/* Our Values */}
+      <section className="about-values">
+        <div className="container">
+          <h2 className="section-title">Our Core Values</h2>
+          <div className="values-grid">
+            <div className="value-card">
+              <div className="value-icon">🍗</div>
+              <h3>Quality First</h3>
+              <p>
+                We never compromise on quality. Every piece of chicken is carefully selected and prepared 
+                to perfection.
+              </p>
             </div>
-          ))}
+            <div className="value-card">
+              <div className="value-icon">🚚</div>
+              <h3>Fast Delivery</h3>
+              <p>
+                Hot, fresh chicken delivered to your door in 30 minutes or less, guaranteed.
+              </p>
+            </div>
+            <div className="value-card">
+              <div className="value-icon">❤️</div>
+              <h3>Customer Love</h3>
+              <p>
+                Your satisfaction is our top priority. We go above and beyond to exceed expectations.
+              </p>
+            </div>
+            <div className="value-card">
+              <div className="value-icon">🌱</div>
+              <h3>Sustainability</h3>
+              <p>
+                We're committed to sustainable practices and supporting local communities.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Tabs Section */}
-      <section className="tabs-section">
-        <div className="tabs-header">
-          <button 
-            className={`tab-btn ${activeTab === 'story' ? 'active' : ''}`}
-            onClick={() => setActiveTab('story')}
-          >
-            Our Story
-          </button>
-          <button 
-            className={`tab-btn ${activeTab === 'team' ? 'active' : ''}`}
-            onClick={() => setActiveTab('team')}
-          >
-            Our Team
-          </button>
-          <button 
-            className={`tab-btn ${activeTab === 'mission' ? 'active' : ''}`}
-            onClick={() => setActiveTab('mission')}
-          >
-            Mission & Values
-          </button>
+      {/* Our Team */}
+      <section className="about-team">
+        <div className="container">
+          <h2 className="section-title">Meet Our Team</h2>
+          <div className="team-grid">
+            <div className="team-member">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" 
+                alt="Chef Michael" 
+              />
+              <h3>Michael Johnson</h3>
+              <p className="role">Head Chef</p>
+              <p className="bio">
+                15+ years of culinary expertise, specializing in international chicken recipes.
+              </p>
+            </div>
+            <div className="team-member">
+              <img 
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face" 
+                alt="Sarah Williams" 
+              />
+              <h3>Sarah Williams</h3>
+              <p className="role">Operations Manager</p>
+              <p className="bio">
+                Ensures every order is prepared and delivered with precision and care.
+              </p>
+            </div>
+            <div className="team-member">
+              <img 
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face" 
+                alt="David Chen" 
+              />
+              <h3>David Chen</h3>
+              <p className="role">Founder & CEO</p>
+              <p className="bio">
+                Started the journey with a passion for bringing families together over great food.
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="tab-content">
-          {activeTab === 'story' && (
-            <div className="story-content">
-              <div className="story-text">
-                <h2>From Kitchen to Your Doorstep</h2>
-                <p>
-                  Founded in 2023, our journey began when <strong>Krishna Patil Rajput</strong>, 
-                  a passionate developer and food enthusiast, teamed up with <strong>Noman Sayyed</strong>, 
-                  an experienced business strategist in the food industry.
-                </p>
-                <p>
-                  We noticed a gap in the market for high-quality, fast chicken delivery that combines 
-                  traditional recipes with modern technology. What started as a small project has now 
-                  grown into a platform serving thousands of satisfied customers daily.
-                </p>
-                
-                <div className="milestones">
-                  <h3>Our Journey</h3>
-                  <div className="milestones-timeline">
-                    {milestones.map((milestone, index) => (
-                      <div key={index} className="milestone">
-                        <div className="milestone-year">{milestone.year}</div>
-                        <div className="milestone-content">
-                          <h4>{milestone.event}</h4>
-                          <p>{milestone.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+      {/* Achievement Section */}
+      <section className="about-achievements">
+        <div className="container">
+          <h2 className="section-title">Our Achievements</h2>
+          <div className="achievements-grid">
+            <div className="achievement-card">
+              <div className="achievement-number">🏆</div>
+              <h3>Best Chicken Restaurant 2023</h3>
+              <p>Taste Awards</p>
             </div>
-          )}
-
-          {activeTab === 'team' && (
-            <div className="team-content">
-              <h2>Meet The Brains & Brawn</h2>
-              <div className="team-grid">
-                {teamMembers.map((member, index) => (
-                  <div key={index} className="team-card">
-                    <div className="member-image">
-                      {member.image}
-                    </div>
-                    <div className="member-info">
-                      <h3>{member.name}</h3>
-                      <p className="member-role">{member.role}</p>
-                      <p className="member-description">{member.description}</p>
-                      
-                      <div className="member-skills">
-                        {member.skills.map((skill, skillIndex) => (
-                          <span key={skillIndex} className="skill-tag">{skill}</span>
-                        ))}
-                      </div>
-                      
-                      <div className="member-social">
-                        {member.social.github && (
-                          <a href={member.social.github} className="social-link">GitHub</a>
-                        )}
-                        {member.social.linkedin && (
-                          <a href={member.social.linkedin} className="social-link">LinkedIn</a>
-                        )}
-                        {member.social.portfolio && (
-                          <a href={member.social.portfolio} className="social-link">Portfolio</a>
-                        )}
-                        {member.social.email && (
-                          <a href={`mailto:${member.social.email}`} className="social-link">Email</a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="achievement-card">
+              <div className="achievement-number">⭐</div>
+              <h3>4.8/5 Customer Rating</h3>
+              <p>Based on 10,000+ reviews</p>
             </div>
-          )}
-
-          {activeTab === 'mission' && (
-            <div className="mission-content">
-              <div className="mission-statement">
-                <h2>Our Mission</h2>
-                <p>
-                  To deliver the most delicious, fresh, and affordable chicken dishes 
-                  right to your doorstep, powered by cutting-edge technology and 
-                  unwavering commitment to quality.
-                </p>
-              </div>
-              
-              <div className="values-grid">
-                <div className="value-card">
-                  <div className="value-icon">🎯</div>
-                  <h3>Quality First</h3>
-                  <p>We never compromise on the quality of our ingredients or preparation methods.</p>
-                </div>
-                <div className="value-card">
-                  <div className="value-icon">⚡</div>
-                  <h3>Speed & Efficiency</h3>
-                  <p>Leveraging technology to ensure fastest possible delivery times.</p>
-                </div>
-                <div className="value-card">
-                  <div className="value-icon">💝</div>
-                  <h3>Customer Love</h3>
-                  <p>Every customer is family, and we treat them with the utmost care and respect.</p>
-                </div>
-                <div className="value-card">
-                  <div className="value-icon">🌱</div>
-                  <h3>Sustainability</h3>
-                  <p>Committed to eco-friendly practices and sustainable operations.</p>
-                </div>
-              </div>
-
-              <div className="features-showcase">
-                <h3>Why Choose Us?</h3>
-                <div className="features-grid">
-                  {features.map((feature, index) => (
-                    <div key={index} className="feature-card">
-                      <div className="feature-icon">{feature.icon}</div>
-                      <h4>{feature.title}</h4>
-                      <p>{feature.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="achievement-card">
+              <div className="achievement-number">🌱</div>
+              <h3>100% Organic Spices</h3>
+              <p>Committed to natural flavors</p>
             </div>
-          )}
+            <div className="achievement-card">
+              <div className="achievement-number">🚗</div>
+              <h3>100+ Delivery Drivers</h3>
+              <p>Ensuring fast, reliable service</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
-        <div className="cta-content">
-          <h2>Ready to Taste the Difference?</h2>
-          <p>Join thousands of satisfied customers and experience the best chicken delivery service.</p>
-          <div className="cta-buttons">
-            <button className="btn-primary large">Order Your First Meal</button>
-            <button className="btn-secondary large">Download Our App</button>
+      <section className="about-cta">
+        <div className="container">
+          <div className="cta-content">
+            <h2>Ready to Taste the Difference?</h2>
+            <p>
+              Join thousands of satisfied customers and experience the Chicken Delight difference today.
+            </p>
+            <div className="cta-buttons">
+              <button className="btn-primary" onClick={() => window.location.href = '/menu'}>
+                Order Now
+              </button>
+              <button className="btn-outline" onClick={() => window.location.href = '/contact'}>
+                Contact Us
+              </button>
+            </div>
           </div>
         </div>
       </section>

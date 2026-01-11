@@ -1,300 +1,175 @@
+// src/pages/Orders/Orders.jsx
 import { useEffect, useState } from "react";
+import { useCart } from "../../Contexts/CartContext";
 import OrderCard from "../../components/OrderCard/OrderCard";
 import "./Orders.css";
 
-// Sample orders data since Firebase isn't set up
 const sampleOrders = [
   {
-    id: "CHK-001",
-    userId: "user1",
+    id: "ORD-7721",
     status: "delivered",
+    orderDate: '2024-03-15T14:30:00',
+    estimatedDelivery: '2024-03-15T15:10:00',
+    deliveryAddress: "Matoshri Engineering College, Nashik",
     items: [
-      { name: "Crispy Fried Chicken", quantity: 2, price: 12.99 },
-      { name: "French Fries", quantity: 1, price: 3.99 }
-    ],
-    total: 29.97,
-    createdAt: new Date('2024-01-15'),
-    estimatedDelivery: new Date('2024-01-15'),
-    deliveryAddress: "123 Main St, City, State 12345"
+      { name: "Fried Chicken Bucket", quantity: 1, price: 24.99, image: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=100&fit=crop" },
+      { name: "Chilled Coke", quantity: 2, price: 4.99, image: "https://images.unsplash.com/photo-1544145945-f904253d0c7b?w=100&fit=crop" }
+    ]
   },
   {
-    id: "CHK-002",
-    userId: "user1",
+    id: "ORD-8842",
     status: "preparing",
+    orderDate: '2024-03-16T12:00:00',
+    estimatedDelivery: '2024-03-16T12:45:00',
+    deliveryAddress: "Odha, Nashik Road",
     items: [
-      { name: "Grilled Chicken Plate", quantity: 1, price: 14.99 },
-      { name: "Coleslaw", quantity: 1, price: 2.99 }
-    ],
-    total: 17.98,
-    createdAt: new Date('2024-01-14'),
-    estimatedDelivery: new Date('2024-01-14'),
-    deliveryAddress: "456 Oak Ave, City, State 12345"
-  },
-  {
-    id: "CHK-003",
-    userId: "user1",
-    status: "out-for-delivery",
-    items: [
-      { name: "Chicken Wings", quantity: 1, price: 10.99 },
-      { name: "Chicken Sandwich", quantity: 1, price: 8.99 }
-    ],
-    total: 19.98,
-    createdAt: new Date('2024-01-13'),
-    estimatedDelivery: new Date('2024-01-13'),
-    deliveryAddress: "789 Pine Rd, City, State 12345"
+      { name: "Zinger Burger", quantity: 2, price: 12.99, image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=100&fit=crop" }
+    ]
   }
 ];
 
-// Empty Orders Component
-const EmptyOrders = () => (
-  <div className="empty-orders">
-    <div className="empty-orders-icon">🍗</div>
-    <h2>No orders yet</h2>
-    <p>Your delicious chicken orders will appear here once you place an order</p>
-    <button 
-      className="browse-menu-btn"
-      onClick={() => window.location.href = '/menu'}
-    >
-      Browse Menu
-    </button>
-  </div>
-);
-
-// Order Filter Component
-const OrderFilter = ({ filters, activeFilter, onFilterChange }) => (
-  <div className="order-filters">
-    {filters.map(filter => (
-      <button
-        key={filter.id}
-        className={`filter-btn ${activeFilter === filter.id ? 'active' : ''}`}
-        onClick={() => onFilterChange(filter.id)}
-      >
-        {filter.label}
-        {filter.count > 0 && <span className="filter-count">{filter.count}</span>}
-      </button>
-    ))}
-  </div>
-);
-
 function Orders() {
+  const { cartItems, cartTotal, clearCart } = useCart();
   const [orders, setOrders] = useState([]);
-  const [filteredOrders, setFilteredOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [activeFilter, setActiveFilter] = useState("all");
-  const [searchQuery, setSearchQuery] = useState("");
-
-  // Order status filters
-  const filters = [
-    { id: "all", label: "All Orders", count: 0 },
-    { id: "pending", label: "Pending", count: 0 },
-    { id: "confirmed", label: "Confirmed", count: 0 },
-    { id: "preparing", label: "Preparing", count: 0 },
-    { id: "out-for-delivery", label: "Out for Delivery", count: 0 },
-    { id: "delivered", label: "Delivered", count: 0 },
-    { id: "cancelled", label: "Cancelled", count: 0 },
-  ];
+  const [showQRCode, setShowQRCode] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        setLoading(true);
-        // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Use sample data instead of Firebase
-        setOrders(sampleOrders);
-        setFilteredOrders(sampleOrders);
-        
-        // Update filter counts
-        updateFilterCounts(sampleOrders);
-      } catch (err) {
-        console.error("Error fetching orders:", err);
-        setError("Failed to load orders. Please try again.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchOrders();
-  }, []);
-
-  // Update filter counts based on orders
-  const updateFilterCounts = (ordersList) => {
-    const updatedFilters = filters.map(filter => {
-      if (filter.id === "all") {
-        return { ...filter, count: ordersList.length };
-      }
-      const count = ordersList.filter(order => order.status === filter.id).length;
-      return { ...filter, count };
-    });
-    // Update filter counts (you can make filters stateful if needed)
-    filters.forEach((filter, index) => {
-      if (filter.id === "all") {
-        filters[index].count = ordersList.length;
-      } else {
-        filters[index].count = ordersList.filter(order => order.status === filter.id).length;
-      }
-    });
-  };
-
-  // Filter orders based on active filter and search query
-  useEffect(() => {
-    let result = orders;
-    
-    // Apply status filter
-    if (activeFilter !== "all") {
-      result = result.filter(order => order.status === activeFilter);
-    }
-    
-    // Apply search filter
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      result = result.filter(order => 
-        order.id.toLowerCase().includes(query) ||
-        order.items.some(item => item.name.toLowerCase().includes(query))
-      );
-    }
-    
-    setFilteredOrders(result);
-  }, [activeFilter, searchQuery, orders]);
-
-  // Handle filter change
-  const handleFilterChange = (filterId) => {
-    setActiveFilter(filterId);
-  };
-
-  // Handle search
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  // Retry fetching orders
-  const handleRetry = () => {
-    setError("");
-    setLoading(true);
-    // Re-fetch orders
+    // Simulated loading of past orders
     setTimeout(() => {
       setOrders(sampleOrders);
-      setFilteredOrders(sampleOrders);
-      updateFilterCounts(sampleOrders);
       setLoading(false);
-    }, 1000);
+    }, 800);
+  }, []);
+
+  const handleCheckout = () => {
+    setShowQRCode(true);
+    
+    // Simulate real order processing
+    setTimeout(() => {
+      const newOrder = {
+        id: `ORD-${Math.floor(Math.random() * 9000) + 1000}`,
+        status: "preparing",
+        orderDate: new Date().toISOString(),
+        estimatedDelivery: new Date(Date.now() + 45 * 60000).toISOString(),
+        deliveryAddress: "Matoshri Engineering College, Nashik",
+        items: [...cartItems] // Moving exact cart items to the order
+      };
+
+      setShowQRCode(false);
+      setOrders(prev => [newOrder, ...prev]);
+      setPaymentSuccess(true);
+      clearCart(); // Purchase complete, clear only the purchased items
+      
+      setTimeout(() => setPaymentSuccess(false), 4000);
+    }, 4000);
   };
 
-  if (loading) {
-    return (
-      <div className="orders-container">
-        <div className="loading">
-          <div className="loading-spinner"></div>
-          <p>Loading orders...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="orders-container">
-        <div className="orders-error">
-          <div className="error-icon">⚠️</div>
-          <h3>Something went wrong</h3>
-          <p>{error}</p>
-          <button onClick={handleRetry} className="retry-btn">
-            Try Again
-          </button>
-        </div>
-      </div>
-    );
-  }
+  if (loading) return <div className="loading-state">Syncing with Kitchen...</div>;
 
   return (
-    <div className="orders-container">
-      <div className="orders-header">
-        <h1>Your Orders</h1>
-        <p>Track and manage your chicken orders</p>
+    <div className="orders-page-wrapper">
+      <div className="container">
+        <div className="orders-grid-layout">
+          
+          {/* Left Column: Real-time Cart Integration */}
+          <div className="orders-column-left">
+            <div className="glass-card cart-card">
+              <div className="card-header">
+                <h2>🛒 Checkout Cart</h2>
+                <span className="item-count-badge">{cartItems.length} Items</span>
+              </div>
+              
+              <div className="cart-list">
+                {cartItems.length > 0 ? cartItems.map(item => (
+                  <div key={item.uniqueId || item.id} className="cart-row">
+                    <img src={item.image} alt={item.name} />
+                    <div className="row-info">
+                      <h4>{item.name}</h4>
+                      <p className="row-price-calc">${item.price.toFixed(2)} × {item.quantity}</p>
+                    </div>
+                    <div className="row-total">${(item.price * item.quantity).toFixed(2)}</div>
+                  </div>
+                )) : (
+                  <div className="empty-cart-state">
+                    <p>Your cart is empty. Please add chicken from the menu!</p>
+                  </div>
+                )}
+              </div>
+
+              <div className="price-summary">
+                <div className="price-row"><span>Subtotal</span><span>${cartTotal.toFixed(2)}</span></div>
+                <div className="price-row"><span>Delivery Fee</span><span>$5.00</span></div>
+                <div className="price-row total"><span>Order Total</span><span>${(cartTotal + 5).toFixed(2)}</span></div>
+              </div>
+
+              <button 
+                className="btn-pay-now highlight-btn" 
+                onClick={handleCheckout} 
+                disabled={cartItems.length === 0}
+              >
+                Purchase These Items 🍗
+              </button>
+            </div>
+
+            <div className="glass-card payment-methods-card">
+              <h3>💳 Payment Method</h3>
+              <div className="method-item active">
+                <span className="method-label">Demo Wallet</span>
+                <span className="badge">Active</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Dynamic Order History */}
+          <div className="orders-column-right">
+            <div className="history-header">
+              <h2>📦 Your Orders</h2>
+              <div className="status-legend">
+                <span className="dot prep"></span> Preparing
+                <span className="dot done"></span> Delivered
+              </div>
+            </div>
+
+            <div className="orders-stack">
+              {orders.map(order => (
+                <OrderCard key={order.id} order={order} />
+              ))}
+            </div>
+          </div>
+
+        </div>
       </div>
 
-      {orders.length === 0 ? (
-        <EmptyOrders />
-      ) : (
-        <>
-          <div className="orders-controls">
-            <div className="search-container">
-              <input
-                type="text"
-                placeholder="Search orders or items..."
-                value={searchQuery}
-                onChange={handleSearch}
-                className="orders-search"
-              />
-              <span className="search-icon">🔍</span>
+      {/* Interactive QR Payment */}
+      {showQRCode && (
+        <div className="advanced-overlay">
+          <div className="qr-container animate-pop">
+            <div className="payment-header-mini">
+              <h3>Secure Checkout</h3>
+              <p>Scan to authorize purchase of ${ (cartTotal + 5).toFixed(2) }</p>
             </div>
-            
-            <OrderFilter
-              filters={filters}
-              activeFilter={activeFilter}
-              onFilterChange={handleFilterChange}
-            />
-          </div>
-
-          <div className="orders-stats">
-            <div className="stat-card">
-              <span className="stat-number">{orders.length}</span>
-              <span className="stat-label">Total Orders</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-number">
-                {orders.filter(o => o.status === 'delivered').length}
-              </span>
-              <span className="stat-label">Delivered</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-number">
-                {orders.filter(o => ['pending', 'confirmed', 'preparing', 'out-for-delivery'].includes(o.status)).length}
-              </span>
-              <span className="stat-label">Active</span>
-            </div>
-          </div>
-
-          <div className="orders-list">
-            {filteredOrders.length === 0 ? (
-              <div className="no-orders-message">
-                <div className="no-orders-icon">📋</div>
-                <h3>No orders found</h3>
-                <p>
-                  {searchQuery 
-                    ? `No orders match "${searchQuery}"`
-                    : `No orders with status "${activeFilter}"`
-                  }
-                </p>
+            <div className="qr-box">
+              <div className="qr-inner">
+                <div className="qr-scan-line"></div>
+                <span className="qr-amount-text">${(cartTotal + 5).toFixed(2)}</span>
               </div>
-            ) : (
-              filteredOrders.map(order => (
-                <OrderCard key={order.id} order={order} />
-              ))
-            )}
-          </div>
-
-          <div className="orders-help">
-            <h3>Need help with an order?</h3>
-            <p>Contact our support team for assistance with your orders</p>
-            <div className="help-buttons">
-              <button className="help-btn">
-                <span className="btn-icon">📞</span>
-                Call Support
-              </button>
-              <button className="help-btn">
-                <span className="btn-icon">💬</span>
-                Chat with Us
-              </button>
-              <button className="help-btn">
-                <span className="btn-icon">📧</span>
-                Email Support
-              </button>
             </div>
+            <p className="verifying-text">Connecting to secure demo server...</p>
           </div>
-        </>
+        </div>
+      )}
+
+      {/* Success Notification */}
+      {paymentSuccess && (
+        <div className="success-toast animate-slide-up">
+          <span className="icon">🍗</span>
+          <div className="text">
+            <h4>Purchase Successful!</h4>
+            <p>Check your order history for details.</p>
+          </div>
+        </div>
       )}
     </div>
   );

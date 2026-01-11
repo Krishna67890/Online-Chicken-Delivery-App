@@ -1,0 +1,103 @@
+/* Amazon-style CSS for Profile Stats Component */
+
+.profile-stats {
+  background: white;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+}
+
+.stat-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #0066c0;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0f1111;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #565959;
+}
+
+.stat-card.orders {
+  border-left: 4px solid #0066c0;
+}
+
+.stat-card.reviews {
+  border-left: 4px solid #ffa726;
+}
+
+.stat-card.points {
+  border-left: 4px solid #2e7d32;
+}
+
+.stat-card.savings {
+  border-left: 4px solid #d12600;
+}
+
+.progress-container {
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #ffd814;
+  width: 75%;
+}
+
+.stat-trend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.trend-up {
+  color: #2e7d32;
+}
+
+.trend-down {
+  color: #d12600;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stat-card {
+    padding: 12px;
+  }
+  
+  .stat-value {
+    font-size: 20px;
+  }
+}

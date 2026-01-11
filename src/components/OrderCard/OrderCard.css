@@ -1,251 +1,173 @@
-/* OrderCard.css */
+/* Amazon-style CSS for Order Card Component */
+
 .order-card {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  margin-bottom: 20px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  border-left: 4px solid #FF6B00;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .order-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-}
-
-.order-card.expanded {
-  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .order-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 20px;
-  cursor: pointer;
-  background: linear-gradient(to right, #f8f9fa, #ffffff);
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-.order-info h3 {
-  margin: 0 0 6px 0;
-  color: #2D3436;
-  font-size: 18px;
-  font-weight: 600;
+.order-number {
+  font-weight: bold;
+  color: #0f1111;
+  font-size: 16px;
 }
 
 .order-date {
-  margin: 0;
-  color: #636E72;
+  color: #565959;
   font-size: 14px;
 }
 
 .order-status {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-.status-badge {
-  padding: 6px 12px;
-  border-radius: 20px;
-  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
   font-size: 12px;
-  font-weight: 600;
-  text-transform: capitalize;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.order-price {
-  font-size: 18px;
-  font-weight: 700;
-  color: #2D3436;
+.status-pending {
+  background-color: #fff8e0;
+  color: #d18700;
 }
 
-.order-details {
-  padding: 20px;
-  border-top: 1px solid #E8ECEF;
-  background-color: #FDFDFD;
+.status-processing {
+  background-color: #e7f3ff;
+  color: #0066c0;
 }
 
-.delivery-info, .items-list {
-  margin-bottom: 20px;
+.status-shipped {
+  background-color: #e3f2fd;
+  color: #1976d2;
 }
 
-.delivery-info h4, .items-list h4 {
-  margin: 0 0 12px 0;
-  color: #2D3436;
-  font-size: 16px;
-  font-weight: 600;
+.status-delivered {
+  background-color: #e8f5e9;
+  color: #2e7d32;
 }
 
-.delivery-info p {
-  margin: 6px 0;
-  color: #636E72;
-  font-size: 14px;
+.status-cancelled {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.order-items {
+  margin-bottom: 15px;
 }
 
 .order-item {
   display: flex;
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid #F1F3F5;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 5px 0;
 }
 
-.order-item:last-child {
-  border-bottom: none;
+.item-name {
+  color: #0f1111;
 }
 
-.item-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-right: 15px;
-}
-
-.item-details {
-  flex: 1;
-}
-
-.item-details h5 {
-  margin: 0 0 4px 0;
-  color: #2D3436;
-  font-size: 15px;
-}
-
-.item-details p {
-  margin: 0;
-  color: #636E72;
-  font-size: 13px;
-  line-height: 1.4;
+.item-quantity {
+  color: #565959;
 }
 
 .item-price {
-  font-weight: 600;
-  color: #2D3436;
+  color: #b12704;
+  font-weight: bold;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  margin-top: 10px;
+}
+
+.total-label {
+  color: #0f1111;
+}
+
+.total-amount {
+  color: #b12704;
 }
 
 .order-actions {
   display: flex;
-  gap: 12px;
-  margin-top: 20px;
+  gap: 10px;
+  margin-top: 15px;
 }
 
-.order-actions button {
-  padding: 10px 18px;
+.track-btn, .reorder-btn, .review-btn {
+  flex: 1;
+  padding: 8px 0;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.reorder-btn {
-  background-color: #FF6B00;
-  color: white;
-}
-
-.reorder-btn:hover {
-  background-color: #E85D00;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
 .track-btn {
-  background-color: #0984E3;
-  color: white;
+  background-color: #e7f3ff;
+  color: #0066c0;
 }
 
 .track-btn:hover {
-  background-color: #0770C4;
+  background-color: #d5e9ff;
 }
 
-.rate-btn {
-  background-color: #00B894;
-  color: white;
+.reorder-btn {
+  background-color: #ffd814;
+  color: #0f1111;
 }
 
-.rate-btn:hover {
-  background-color: #00A382;
+.reorder-btn:hover {
+  background-color: #f7ca00;
 }
 
-.progress-bar {
-  height: 6px;
-  background-color: #E8ECEF;
-  width: 100%;
+.review-btn {
+  background-color: #f0f2f2;
+  color: #0f1111;
 }
 
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(to right, #FF6B00, #FF9E45);
-  transition: width 0.5s ease;
+.review-btn:hover {
+  background-color: #e8e8e8;
 }
 
-/* Status-specific styles */
-.order-card.preparing {
-  border-left-color: #FF9800;
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  color: #565959;
+  font-size: 12px;
 }
 
-.order-card.preparing .progress-fill {
-  background: linear-gradient(to right, #FF9800, #FFB74D);
-}
-
-.order-card.on-the-way {
-  border-left-color: #2196F3;
-}
-
-.order-card.on-the-way .progress-fill {
-  background: linear-gradient(to right, #2196F3, #64B5F6);
-}
-
-.order-card.delivered {
-  border-left-color: #4CAF50;
-}
-
-.order-card.delivered .progress-fill {
-  background: linear-gradient(to right, #4CAF50, #81C784);
-}
-
-.order-card.cancelled {
-  border-left-color: #F44336;
-}
-
-.order-card.cancelled .progress-fill {
-  background: linear-gradient(to right, #F44336, #E57373);
-  width: 100%;
-}
-
-/* Responsive design */
 @media (max-width: 768px) {
-  .order-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  
-  .order-status {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-  }
-  
-  .order-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  
-  .item-image {
-    width: 100%;
-    height: 120px;
-    margin-right: 0;
+  .order-card {
+    padding: 12px;
   }
   
   .order-actions {
     flex-direction: column;
-  }
-  
-  .order-actions button {
-    width: 100%;
   }
 }

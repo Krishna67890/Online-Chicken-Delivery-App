@@ -1,0 +1,154 @@
+/* Amazon-style CSS for Address Card Component */
+
+.address-card {
+  background: white;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.address-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.address-card.selected {
+  border: 2px solid #0066c0;
+  background-color: #f0f7ff;
+}
+
+.address-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.address-type {
+  font-weight: bold;
+  color: #0f1111;
+  font-size: 16px;
+}
+
+.default-tag {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.address-content {
+  margin-bottom: 15px;
+}
+
+.address-line {
+  color: #0f1111;
+  margin-bottom: 3px;
+  line-height: 1.4;
+}
+
+.address-phone {
+  color: #565959;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.address-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.set-default-btn, .edit-btn, .delete-btn {
+  flex: 1;
+  padding: 6px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s;
+}
+
+.set-default-btn {
+  background-color: #e7f3ff;
+  color: #0066c0;
+}
+
+.set-default-btn:hover {
+  background-color: #d5e9ff;
+}
+
+.set-default-btn:disabled {
+  background-color: #d5d9d9;
+  cursor: not-allowed;
+}
+
+.edit-btn {
+  background-color: #f0f2f2;
+  color: #0f1111;
+}
+
+.edit-btn:hover {
+  background-color: #e8e8e8;
+}
+
+.delete-btn {
+  background-color: #ffd8bf;
+  color: #d12600;
+}
+
+.delete-btn:hover {
+  background-color: #ffcabf;
+}
+
+.address-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  color: #565959;
+  font-size: 12px;
+}
+
+.select-btn {
+  width: 100%;
+  background-color: #ffd814;
+  color: #0f1111;
+  border: none;
+  padding: 8px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.select-btn:hover {
+  background-color: #f7ca00;
+}
+
+.select-btn:disabled {
+  background-color: #d5d9d9;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .address-card {
+    padding: 12px;
+  }
+  
+  .address-actions {
+    flex-direction: column;
+  }
+  
+  .select-btn {
+    margin-top: 10px;
+  }
+}

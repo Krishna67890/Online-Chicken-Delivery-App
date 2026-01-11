@@ -1,0 +1,334 @@
+/* Amazon-style CSS for Admin Users Management */
+
+.admin-users {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 20px;
+  color: #0f1111;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-header {
+  background-color: #131921;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.admin-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.admin-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.admin-nav a:hover {
+  background-color: #4a5157;
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.users-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.invite-user-btn {
+  background-color: #ffd814;
+  color: #0f1111;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.invite-user-btn:hover {
+  background-color: #f7ca00;
+}
+
+.search-bar {
+  width: 300px;
+  padding: 8px 12px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.users-section {
+  background: white;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #0f1111;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.users-table th {
+  background-color: #f0f2f2;
+  font-weight: bold;
+  color: #565959;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e7f3ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0066c0;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.user-email {
+  color: #565959;
+  font-size: 14px;
+}
+
+.user-role {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.role-admin {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.role-manager {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.role-user {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.users-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.action-btn {
+  background-color: #f0f2f2;
+  border: 1px solid #d5d9d9;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+}
+
+.action-btn:hover {
+  background-color: #e8e8e8;
+}
+
+.edit-btn {
+  background-color: #e7f3ff;
+  color: #0066c0;
+}
+
+.edit-btn:hover {
+  background-color: #d5e9ff;
+}
+
+.delete-btn {
+  background-color: #ffd8bf;
+  color: #d12600;
+}
+
+.delete-btn:hover {
+  background-color: #ffcabf;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 5px;
+}
+
+.page-btn {
+  background-color: #f0f2f2;
+  border: 1px solid #d5d9d9;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.page-btn:hover {
+  background-color: #e8e8e8;
+}
+
+.page-btn.active {
+  background-color: #ffd814;
+  color: #0f1111;
+}
+
+.user-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.user-modal-content {
+  background: white;
+  border-radius: 4px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.user-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.close-user-modal-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #565959;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.save-user-btn, .cancel-user-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.save-user-btn {
+  background-color: #ffd814;
+  color: #0f1111;
+}
+
+.save-user-btn:hover {
+  background-color: #f7ca00;
+}
+
+.cancel-user-btn {
+  background-color: #f0f2f2;
+  color: #0f1111;
+}
+
+.cancel-user-btn:hover {
+  background-color: #e8e8e8;
+}
