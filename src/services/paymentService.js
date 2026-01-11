@@ -1,5 +1,5 @@
-import { api, buildUrl } from './api/apiClient';
-import { ENDPOINTS } from './api/endpoints';
+import { api } from './api/apiClient';
+import { ENDPOINTS, buildUrl } from './api/endpoints';
 import { analyticsService } from './analyticsService';
 
 export const paymentService = {
@@ -102,6 +102,43 @@ export const paymentService = {
       return response.data;
     } catch (error) {
       console.error('Process payment error:', error);
+      throw error;
+    }
+  },
+
+  // Process cart payment
+  async processCartPayment(cartItems, paymentMethodId, saveMethod = false) {
+    try {
+      // Calculate total from cart items
+      const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      // Create order data from cart
+      const orderData = {
+        items: cartItems.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          subtotal: item.price * item.quantity
+        })),
+        total,
+        paymentMethodId,
+        saveMethod,
+      };
+
+      const response = await api.post('/payments/process-cart', orderData);
+
+      // Track payment
+      analyticsService.track('Cart Payment Processed', {
+        total,
+        itemCount: cartItems.length,
+        paymentMethodId,
+        success: response.data.status === 'succeeded',
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error('Process cart payment error:', error);
       throw error;
     }
   },

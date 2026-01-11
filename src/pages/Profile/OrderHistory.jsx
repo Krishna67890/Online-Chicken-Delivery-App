@@ -1,9 +1,9 @@
 // src/pages/Profile/OrderHistory.jsx
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from './hooks/useAuth';
-import { useOrders } from './hooks/useOrders';
-import { useNotifications } from './hooks/useNotifications';
+import { useAuth } from '../../hooks/useAuth';
+import { useOrders } from '../../hooks/useOrders';
+import { useNotifications } from '../../hooks/useNotifications';
 import OrderCard from '../../components/OrderCard/OrderCard';
 import OrderFilters from '../../components/OrderFilters/OrderFilters';
 import OrderStats from '../../components/OrderStats/OrderStats';

@@ -1,0 +1,126 @@
+/* Maintenance Mode Component Styles - Amazon-style */
+
+.maintenance-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.maintenance-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 60px 40px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #d5d9d9;
+}
+
+.maintenance-icon {
+  font-size: 64px;
+  color: #ff9900;
+  margin-bottom: 20px;
+}
+
+.maintenance-title {
+  font-size: 28px;
+  color: #0f1111;
+  margin: 0 0 20px 0;
+}
+
+.maintenance-message {
+  color: #565959;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.maintenance-contact {
+  color: #565959;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.maintenance-btn {
+  display: inline-block;
+  background-color: #ff9900;
+  color: #131921;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.maintenance-btn:hover {
+  background-color: #f7ca00;
+  text-decoration: none;
+  color: #131921;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.countdown-item {
+  text-align: center;
+}
+
+.countdown-number {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0f1111;
+  margin-bottom: 5px;
+}
+
+.countdown-label {
+  font-size: 14px;
+  color: #565959;
+  text-transform: uppercase;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .maintenance-content {
+    padding: 40px 20px;
+  }
+  
+  .maintenance-title {
+    font-size: 24px;
+  }
+  
+  .countdown {
+    gap: 10px;
+  }
+  
+  .countdown-number {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .maintenance-content {
+    padding: 30px 15px;
+  }
+  
+  .maintenance-title {
+    font-size: 20px;
+  }
+  
+  .countdown {
+    flex-wrap: wrap;
+  }
+  
+  .countdown-item {
+    flex: 1 0 40%;
+    margin-bottom: 15px;
+  }
+}

@@ -2,7 +2,7 @@
 
 // API Configuration
 export const API_CONFIG = {
-  BASE_URL: process.env.REACT_APP_API_BASE_URL || 'https://api.chickendelivery.com/v1',
+  BASE_URL: import.meta.env.VITE_API_BASE_URL || 'https://api.chickendelivery.com/v1',
   TIMEOUT: 10000,
   RETRY_ATTEMPTS: 3,
 };

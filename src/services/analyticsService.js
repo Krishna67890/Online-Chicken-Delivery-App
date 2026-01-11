@@ -1,126 +1,191 @@
-// Analytics service for tracking user behavior and events
-export const analyticsService = {
-  // Initialize analytics
+// Mock Analytics Service
+class AnalyticsService {
+  /**
+   * Initialize analytics service
+   */
   init() {
-    // Initialize your analytics SDKs here (Google Analytics, Mixpanel, etc.)
-    if (typeof gtag !== 'undefined') {
-      gtag('config', process.env.REACT_APP_GA_TRACKING_ID);
-    }
-  },
+    console.log('Analytics service initialized (mock)');
+  }
 
-  // Track page views
-  trackPageView(pageName, properties = {}) {
-    const eventData = {
-      page: pageName,
-      timestamp: new Date().toISOString(),
-      ...properties,
-    };
+  /**
+   * Track a custom event
+   * @param {string} eventName - Name of the event
+   * @param {Object} params - Event parameters
+   */
+  trackEvent(eventName, params = {}) {
+    console.log(`Analytics event tracked: ${eventName}`, params);
+    // In a real implementation, this would send data to an analytics provider
+  }
 
-    // Send to analytics services
-    this._sendToGoogleAnalytics('page_view', eventData);
-    this._sendToMixpanel('Page View', eventData);
-    
-    console.log('📊 Page View:', eventData);
-  },
+  /**
+   * Track page view
+   * @param {string} pageName - Name of the page
+   */
+  trackPageView(pageName) {
+    console.log(`Page view tracked: ${pageName}`);
+    // In a real implementation, this would send data to an analytics provider
+  }
 
-  // Track custom events
-  track(eventName, properties = {}) {
-    const eventData = {
-      event: eventName,
-      timestamp: new Date().toISOString(),
-      ...properties,
-    };
+  /**
+   * Track user signup
+   */
+  trackSignUp() {
+    this.trackEvent('user_signup', {
+      timestamp: new Date().toISOString()
+    });
+  }
 
-    // Send to analytics services
-    this._sendToGoogleAnalytics('event', eventData);
-    this._sendToMixpanel(eventName, eventData);
-    
-    console.log('📊 Event:', eventData);
-  },
+  /**
+   * Track user login
+   */
+  trackLogin() {
+    this.trackEvent('user_login', {
+      timestamp: new Date().toISOString()
+    });
+  }
 
-  // Identify user
-  identify(userId, traits = {}) {
-    const identifyData = {
-      userId,
-      traits,
-      timestamp: new Date().toISOString(),
-    };
+  /**
+   * Track order placement
+   * @param {Object} orderData - Order information
+   */
+  trackOrderPlaced(orderData) {
+    this.trackEvent('order_placed', {
+      orderId: orderData.id,
+      total: orderData.total,
+      itemsCount: orderData.items?.length || 0,
+      timestamp: new Date().toISOString()
+    });
+  }
 
-    // Send to analytics services
-    this._sendToMixpanel('Identify', identifyData);
-    
-    console.log('📊 Identify:', identifyData);
-  },
+  /**
+   * Track item added to cart
+   * @param {Object} itemData - Item information
+   */
+  trackItemAddedToCart(itemData) {
+    this.trackEvent('item_added_to_cart', {
+      itemId: itemData.id,
+      itemName: itemData.name,
+      price: itemData.price,
+      timestamp: new Date().toISOString()
+    });
+  }
 
-  // Track e-commerce events
-  trackEcommerce(eventName, properties = {}) {
-    const ecommerceData = {
-      event: eventName,
-      ecommerce: true,
-      timestamp: new Date().toISOString(),
-      ...properties,
-    };
+  /**
+   * Track checkout started
+   */
+  trackCheckoutStarted() {
+    this.trackEvent('checkout_started', {
+      timestamp: new Date().toISOString()
+    });
+  }
 
-    this.track(eventName, ecommerceData);
-  },
+  /**
+   * Track checkout completed
+   * @param {Object} orderData - Order information
+   */
+  trackCheckoutCompleted(orderData) {
+    this.trackEvent('checkout_completed', {
+      orderId: orderData.id,
+      total: orderData.total,
+      timestamp: new Date().toISOString()
+    });
+  }
 
-  // Track errors
-  trackError(error, context = {}) {
-    const errorData = {
-      event: 'Error Occurred',
-      error: error.message,
-      stack: error.stack,
-      context,
-      timestamp: new Date().toISOString(),
-    };
+  /**
+   * Track search query
+   * @param {string} query - Search query
+   */
+  trackSearch(query) {
+    this.trackEvent('search_performed', {
+      query: query,
+      timestamp: new Date().toISOString()
+    });
+  }
 
-    this.track('Error', errorData);
-  },
+  /**
+   * Track filter applied
+   * @param {string} filterType - Type of filter
+   * @param {string} filterValue - Filter value
+   */
+  trackFilterApplied(filterType, filterValue) {
+    this.trackEvent('filter_applied', {
+      filterType: filterType,
+      filterValue: filterValue,
+      timestamp: new Date().toISOString()
+    });
+  }
 
-  // Track performance metrics
-  trackPerformance(metricName, value, properties = {}) {
-    const performanceData = {
-      event: 'Performance Metric',
-      metric: metricName,
-      value,
-      timestamp: new Date().toISOString(),
-      ...properties,
-    };
+  /**
+   * Track item viewed
+   * @param {Object} itemData - Item information
+   */
+  trackItemViewed(itemData) {
+    this.trackEvent('item_viewed', {
+      itemId: itemData.id,
+      itemName: itemData.name,
+      category: itemData.category,
+      timestamp: new Date().toISOString()
+    });
+  }
 
-    this.track('Performance', performanceData);
-  },
+  /**
+   * Track address added
+   */
+  trackAddressAdded() {
+    this.trackEvent('address_added', {
+      timestamp: new Date().toISOString()
+    });
+  }
 
-  // Reset analytics (on logout)
-  reset() {
-    // Reset analytics services
-    if (typeof mixpanel !== 'undefined') {
-      mixpanel.reset();
-    }
-  },
+  /**
+   * Track profile updated
+   */
+  trackProfileUpdated() {
+    this.trackEvent('profile_updated', {
+      timestamp: new Date().toISOString()
+    });
+  }
 
-  // Private method to send to Google Analytics
-  _sendToGoogleAnalytics(eventType, data) {
-    if (typeof gtag !== 'undefined') {
-      if (eventType === 'page_view') {
-        gtag('event', 'page_view', {
-          page_title: data.page,
-          page_location: window.location.href,
-        });
-      } else if (eventType === 'event') {
-        gtag('event', data.event, data);
-      }
-    }
-  },
+  /**
+   * Track payment method added
+   */
+  trackPaymentMethodAdded() {
+    this.trackEvent('payment_method_added', {
+      timestamp: new Date().toISOString()
+    });
+  }
 
-  // Private method to send to Mixpanel
-  _sendToMixpanel(eventName, data) {
-    if (typeof mixpanel !== 'undefined') {
-      if (eventName === 'Identify') {
-        mixpanel.identify(data.userId);
-        mixpanel.people.set(data.traits);
-      } else {
-        mixpanel.track(eventName, data);
-      }
-    }
-  },
-};
+  /**
+   * Track app opened
+   */
+  trackAppOpened() {
+    this.trackEvent('app_opened', {
+      timestamp: new Date().toISOString()
+    });
+  }
+
+  /**
+   * Track app closed
+   */
+  trackAppClosed() {
+    this.trackEvent('app_closed', {
+      timestamp: new Date().toISOString()
+    });
+  }
+
+  /**
+   * Track error
+   * @param {string} error - Error message
+   * @param {string} location - Location where error occurred
+   */
+  trackError(error, location) {
+    this.trackEvent('error_occurred', {
+      error: error,
+      location: location,
+      timestamp: new Date().toISOString()
+    });
+  }
+}
+
+export const analyticsService = new AnalyticsService();
+export default analyticsService;

@@ -1,376 +1,237 @@
-/* ChickenWings.css */
-.chicken-wings-container {
+/* Amazon-style CSS for Chicken Wings Page */
+
+.chicken-wings {
+  background-color: #f8f9fa;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  position: relative;
-  overflow: hidden;
-  padding: 2rem;
+  padding: 20px 0;
+  color: #0f1111;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.title-container {
-  text-align: center;
-  margin-bottom: 2rem;
+.wings-header {
+  background-color: #131921;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.main-title {
-  font-size: 3rem;
+.wings-title {
+  font-size: 24px;
   font-weight: bold;
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24, #ffd700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   margin: 0;
 }
 
-.subtitle {
-  color: #666;
-  font-size: 1.2rem;
-  margin: 0.5rem 0 0 0;
+.breadcrumb {
+  color: #ccc;
+  font-size: 14px;
+  margin: 10px 20px;
 }
 
-.grill-surface {
-  position: relative;
-  width: 80%;
-  height: 400px;
+.breadcrumb a {
+  color: #0066c0;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.wings-container {
+  max-width: 1200px;
   margin: 0 auto;
-  background: linear-gradient(135deg, #95a5a6, #7f8c8d);
-  border-radius: 15px;
-  border: 3px solid #2c3e50;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  padding: 0 20px;
+}
+
+.wings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.wing-card {
+  background: white;
+  border-radius: 4px;
   overflow: hidden;
-  transition: all 0.5s ease;
-}
-
-.grill-surface.cooking {
-  background: linear-gradient(135deg, #e74c3c, #c0392b);
-}
-
-.grill-lines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    linear-gradient(90deg, transparent 24px, rgba(0, 0, 0, 0.1) 24px, rgba(0, 0, 0, 0.1) 25px, transparent 25px),
-    linear-gradient(0deg, transparent 24px, rgba(0, 0, 0, 0.1) 24px, rgba(0, 0, 0, 0.1) 25px, transparent 25px);
-  background-size: 25px 25px;
-}
-
-.heat-waves {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 165, 0, 0.3) 0%, transparent 50%);
-  animation: heatWave 2s infinite alternate;
-  pointer-events: none;
-}
-
-.chicken-wing {
-  position: absolute;
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
-}
-
-.wing-body {
-  width: 60px;
-  height: 30px;
-  background: #F5D0A9;
-  border-radius: 15px 8px 8px 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.3),
-    inset 2px 0 10px rgba(255, 255, 255, 0.2),
-    inset -2px 0 10px rgba(0, 0, 0, 0.1);
-  transform: perspective(500px) rotateX(5deg);
-  transition: all 0.4s ease;
 }
 
-.wing-bone {
+.wing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.wing-image {
+  width: 100%;
+  height: 180px;
+  background-color: #f0f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wing-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.wing-info {
+  padding: 15px;
+}
+
+.wing-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #0f1111;
+}
+
+.wing-description {
+  color: #565959;
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.wing-spice-level {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.spice-icon {
+  color: #ff9900;
+  margin-right: 5px;
+}
+
+.wing-price {
+  color: #b12704;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.wing-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stars {
+  color: #ffa726;
+  margin-right: 5px;
+}
+
+.rating-value {
+  font-size: 14px;
+  color: #565959;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  background-color: #ffd814;
+  color: #0f1111;
+  border: none;
+  padding: 8px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #f7ca00;
+}
+
+.wing-badge {
   position: absolute;
-  right: 10px;
-  top: 5px;
-  width: 15px;
-  height: 20px;
-  background: linear-gradient(45deg, #F5F5F5, #E0E0E0);
-  border-radius: 3px;
-  transform: rotate(-5deg);
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  top: 10px;
+  left: 10px;
+  background-color: #b12704;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
-.seasoning-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 15px 8px 8px 15px;
-  pointer-events: none;
+.filters-section {
+  background: white;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.grill-mark {
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.3), transparent);
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.grill-mark-1 {
-  top: 25%;
-  left: 15%;
-  right: 15%;
-  transform: rotate(-30deg);
+.filters-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0f1111;
 }
 
-.grill-mark-2 {
-  top: 60%;
-  left: 15%;
-  right: 15%;
-  transform: rotate(30deg);
+.clear-filters {
+  color: #0066c0;
+  text-decoration: none;
+  font-size: 14px;
 }
 
-/* Cook levels */
-.wing-raw { background: #F5D0A9 !important; }
-.wing-light { background: #F7BE81 !important; }
-.wing-golden { background: #DBA901 !important; }
-.wing-brown { background: #B45F04 !important; }
-.wing-crispy { background: #8A4B08 !important; }
+.filter-group {
+  margin-bottom: 15px;
+}
 
-/* Seasoning colors */
-.seasoning-original { background: transparent !important; }
-.seasoning-bbq { background: radial-gradient(circle at 30% 40%, #8B451340 0%, transparent 50%) !important; }
-.seasoning-buffalo { background: radial-gradient(circle at 30% 40%, #FF450040 0%, transparent 50%) !important; }
-.seasoning-lemon-pepper { background: radial-gradient(circle at 30% 40%, #FFD70040 0%, transparent 50%) !important; }
-.seasoning-garlic-parmesan { background: radial-gradient(circle at 30% 40%, #F5DEB340 0%, transparent 50%) !important; }
-.seasoning-teriyaki { background: radial-gradient(circle at 30% 40%, #8B000040 0%, transparent 50%) !important; }
+.filter-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #0f1111;
+}
 
-.control-panel {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+.filter-options {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  z-index: 1000;
-  min-width: 300px;
+  gap: 5px;
 }
 
-.control-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.control-btn {
-  padding: 12px 16px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.control-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.control-btn:not(:disabled):hover {
-  transform: translateY(-2px);
-}
-
-.control-btn.primary {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-}
-
-.control-btn.primary:not(:disabled):hover {
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-}
-
-.control-btn.secondary {
-  background: linear-gradient(135deg, #f093fb, #f5576c);
-  color: white;
-}
-
-.control-btn.secondary:not(:disabled):hover {
-  box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
-}
-
-.control-btn.success {
-  background: linear-gradient(135deg, #4ecdc4, #44a08d);
-  color: white;
-}
-
-.control-btn.success:not(:disabled):hover {
-  box-shadow: 0 8px 20px rgba(78, 205, 196, 0.4);
-}
-
-.control-btn.danger {
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-  color: white;
-}
-
-.control-btn.danger:not(:disabled):hover {
-  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
-}
-
-.control-btn.default {
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  border: 2px solid #e0e0e0;
-}
-
-.control-btn.default:not(:disabled):hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.seasoning-section {
-  margin-bottom: 1rem;
-}
-
-.seasoning-title {
-  margin: 0 0 0.5rem 0;
-  color: #333;
-}
-
-.seasoning-buttons {
+.filter-option {
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
 }
 
-.seasoning-btn {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  font-size: 12px;
-  text-transform: capitalize;
+.no-wings {
+  text-align: center;
+  padding: 40px;
+  color: #565959;
+  font-size: 18px;
 }
 
-.seasoning-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.seasoning-btn.active {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.stats-panel {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  padding: 1rem;
-  border-radius: 12px;
-  color: white;
-}
-
-.stats-title {
-  margin: 0 0 0.5rem 0;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  margin-top: 0.5rem;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #ff6b6b, #ffa500, #ffd700);
-  border-radius: 4px;
-  transition: width 0.3s ease;
-}
-
-/* Animations */
-@keyframes heatWave {
-  0% { opacity: 0.3; transform: scale(1); }
-  100% { opacity: 0.6; transform: scale(1.1); }
-}
-
-@keyframes sizzle {
-  0% { transform: scale(1) rotate(0deg); }
-  25% { transform: scale(1.02) rotate(1deg); }
-  50% { transform: scale(1) rotate(0deg); }
-  75% { transform: scale(1.02) rotate(-1deg); }
-  100% { transform: scale(1) rotate(0deg); }
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  .chicken-wings-container {
-    padding: 1rem;
+  .wings-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
   }
   
-  .main-title {
-    font-size: 2rem;
-  }
-  
-  .grill-surface {
-    width: 95%;
-    height: 300px;
-  }
-  
-  .control-panel {
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
-    transform: none;
-    min-width: auto;
-  }
-  
-  .wing-body {
-    width: 40px;
-    height: 20px;
-  }
-  
-  .wing-bone {
-    width: 10px;
-    height: 15px;
-    right: 5px;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-title {
-    font-size: 1.5rem;
-  }
-  
-  .control-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .seasoning-buttons {
-    justify-content: center;
-  }
-  
-  .control-btn {
-    padding: 10px 12px;
-    font-size: 12px;
+  .wings-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 }

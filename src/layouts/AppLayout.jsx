@@ -10,7 +10,7 @@ const AppLayout = () => {
         <Outlet />
       </main>
       <footer className="app-footer">
-        <p>&copy; {new Date().getFullYear()} Chicken Express. All rights reserved.</p>
+        <p>&copy; 2026 Chicken Express. All rights reserved by Krishna Patil Rajput.</p>
       </footer>
     </div>
   );

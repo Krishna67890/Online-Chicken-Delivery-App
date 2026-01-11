@@ -1,0 +1,130 @@
+/* Amazon-style CSS for Payment Card Component */
+
+.payment-card {
+  background: white;
+  border-radius: 4px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.payment-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.card-type {
+  font-weight: bold;
+  color: #0f1111;
+  font-size: 16px;
+}
+
+.card-number {
+  color: #565959;
+  font-family: monospace;
+}
+
+.card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.detail-group {
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  font-size: 12px;
+  color: #565959;
+  margin-bottom: 3px;
+}
+
+.detail-value {
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.edit-btn {
+  background-color: #e7f3ff;
+  color: #0066c0;
+}
+
+.edit-btn:hover {
+  background-color: #d5e9ff;
+}
+
+.delete-btn {
+  background-color: #ffd8bf;
+  color: #d12600;
+}
+
+.delete-btn:hover {
+  background-color: #ffcabf;
+}
+
+.default-indicator {
+  display: inline-block;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.payment-card.selected {
+  border: 2px solid #0066c0;
+  background-color: #f0f7ff;
+}
+
+.card-icon {
+  width: 32px;
+  height: 24px;
+  background-color: #f0f2f2;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .payment-card {
+    padding: 12px;
+  }
+  
+  .card-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-actions {
+    flex-direction: column;
+  }
+}

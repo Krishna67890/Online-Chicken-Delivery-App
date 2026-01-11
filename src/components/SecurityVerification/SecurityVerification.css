@@ -1,0 +1,169 @@
+/* Security Verification Component Styles - Amazon-style */
+
+.security-verification {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #d5d9d9;
+  text-align: center;
+}
+
+.verification-icon {
+  font-size: 48px;
+  color: #ff9900;
+  margin-bottom: 20px;
+}
+
+.verification-title {
+  font-size: 24px;
+  color: #0f1111;
+  margin: 0 0 15px 0;
+}
+
+.verification-message {
+  color: #565959;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.verification-form {
+  margin-bottom: 25px;
+}
+
+.verification-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.verification-input {
+  width: 50px;
+  height: 60px;
+  text-align: center;
+  font-size: 24px;
+  border: 2px solid #d5d9d9;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.verification-input:focus {
+  outline: none;
+  border-color: #ff9900;
+  box-shadow: 0 0 0 2px rgba(255, 153, 0, 0.2);
+}
+
+.resend-section {
+  margin-bottom: 25px;
+}
+
+.resend-text {
+  color: #565959;
+  margin-bottom: 10px;
+}
+
+.resend-btn {
+  background: none;
+  border: none;
+  color: #0066c0;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.resend-btn:hover {
+  color: #ff9900;
+}
+
+.timer {
+  color: #b12704;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.verification-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.verify-btn {
+  padding: 12px 24px;
+  background-color: #ff9900;
+  color: #131921;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.verify-btn:hover {
+  background-color: #f7ca00;
+}
+
+.verify-btn:disabled {
+  background-color: #d5d9d9;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  padding: 12px 24px;
+  background-color: #e7e9ea;
+  color: #111;
+  border: 1px solid #adb1b8;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #d5d9d9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .security-verification {
+    padding: 20px;
+  }
+  
+  .verification-title {
+    font-size: 20px;
+  }
+  
+  .verification-input {
+    width: 40px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .verification-actions {
+    flex-direction: column;
+  }
+  
+  .verify-btn,
+  .cancel-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .security-verification {
+    padding: 15px;
+  }
+  
+  .verification-inputs {
+    gap: 5px;
+  }
+  
+  .verification-input {
+    width: 35px;
+    height: 45px;
+    font-size: 18px;
+  }
+}

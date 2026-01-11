@@ -1,400 +1,192 @@
-/* OrderTracker.css */
+/* Order Tracker Component Styles - Amazon-style */
+
 .order-tracker {
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.tracker-card {
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 700px;
-  overflow: hidden;
-  animation: slideUp 0.5s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #d5d9d9;
+  margin-bottom: 30px;
 }
 
 .tracker-header {
-  padding: 25px;
-  background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
-  color: white;
   text-align: center;
+  margin-bottom: 30px;
 }
 
-.tracker-header h1 {
-  margin: 0 0 8px 0;
-  font-size: 28px;
-}
-
-.order-time {
-  margin: 0;
-  opacity: 0.9;
-  font-size: 16px;
-}
-
-.status-section {
-  padding: 25px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.status-progress {
-  margin-bottom: 25px;
-}
-
-.progress-bar {
-  height: 8px;
-  background-color: #e0e0e0;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 40px;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #ff7e5f, #feb47b);
-  border-radius: 4px;
-  transition: width 0.5s ease;
-}
-
-.status-indicators {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
-
-.status-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-.status-icon {
+.tracker-title {
   font-size: 24px;
-  margin-bottom: 8px;
+  color: #0f1111;
+  margin: 0 0 10px 0;
 }
 
-.status-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #9e9e9e;
-  text-align: center;
-}
-
-.status-indicator.active .status-label {
-  color: #ff7e5f;
-}
-
-.current-status {
-  display: flex;
-  justify-content: center;
-}
-
-.status-badge {
-  display: flex;
-  align-items: center;
-  background: #f8f9fa;
-  padding: 15px 20px;
-  border-radius: 12px;
-  border-left: 4px solid #ff7e5f;
-}
-
-.status-emoji {
-  font-size: 32px;
-  margin-right: 15px;
-}
-
-.status-badge h3 {
-  margin: 0 0 5px 0;
-  color: #2d3436;
-}
-
-.status-badge p {
+.tracker-subtitle {
+  color: #565959;
   margin: 0;
-  color: #636e72;
-  font-size: 14px;
 }
 
-.driver-section {
-  padding: 0 25px 25px;
-  border-bottom: 1px solid #f0f0f0;
+.tracker-status {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.driver-section h2 {
-  margin: 0 0 15px 0;
-  color: #2d3436;
+.status-current {
   font-size: 18px;
+  font-weight: bold;
+  color: #0f1111;
+  margin: 0 0 10px 0;
 }
 
-.driver-card {
-  background: #f8f9fa;
-  border-radius: 12px;
-  padding: 20px;
+.status-eta {
+  font-size: 16px;
+  color: #565959;
+  margin: 0;
+}
+
+.status-eta.urgent {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.tracker-map {
+  height: 200px;
+  background-color: #f0f2f2;
+  border-radius: 8px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  color: #565959;
+  font-size: 16px;
 }
 
 .driver-info {
   display: flex;
   align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 20px 0;
 }
 
 .driver-avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+  object-fit: cover;
+  background-color: #e9ecef;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   font-weight: bold;
-  margin-right: 15px;
+  color: #0f1111;
 }
 
-.driver-details h3 {
+.driver-details {
+  flex: 1;
+}
+
+.driver-name {
+  font-weight: bold;
+  color: #0f1111;
   margin: 0 0 5px 0;
-  color: #2d3436;
 }
 
-.driver-details p {
-  margin: 0;
-  color: #636e72;
+.driver-rating {
+  color: #ffa41c;
   font-size: 14px;
 }
 
-.driver-actions {
+.driver-contact {
   display: flex;
   gap: 10px;
 }
 
-.action-btn {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
+.contact-btn {
+  padding: 6px 12px;
+  border: 1px solid #d5d9d9;
+  background: white;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.action-btn.call {
-  background: #4caf50;
-  color: white;
-}
-
-.action-btn.message {
-  background: #2196f3;
-  color: white;
-}
-
-.action-btn:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
-
-.order-details, .delivery-info {
-  padding: 25px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.order-details h2, .delivery-info h2 {
-  margin: 0 0 20px 0;
-  color: #2d3436;
-  font-size: 20px;
-}
-
-.order-items {
-  margin-bottom: 20px;
-}
-
-.order-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.order-item:last-child {
-  border-bottom: none;
-}
-
-.item-quantity {
-  font-weight: 600;
-  color: #ff7e5f;
-  min-width: 30px;
-}
-
-.item-name {
-  flex: 1;
-  margin: 0 15px;
-}
-
-.item-price {
-  font-weight: 600;
-  color: #2d3436;
-}
-
-.order-totals {
-  border-top: 2px dashed #e0e0e0;
-  padding-top: 15px;
-}
-
-.total-line {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.total-line.grand-total {
-  font-weight: 700;
-  font-size: 18px;
-  border-top: 1px solid #e0e0e0;
-  padding-top: 10px;
-  margin-top: 10px;
-}
-
-.info-card {
-  background: #f8f9fa;
-  border-radius: 12px;
-  padding: 20px;
-}
-
-.info-row {
-  display: flex;
-  margin-bottom: 15px;
-}
-
-.info-row:last-child {
-  margin-bottom: 0;
-}
-
-.info-label {
-  font-weight: 600;
-  color: #2d3436;
-  min-width: 150px;
-}
-
-.info-value {
-  color: #636e72;
-  flex: 1;
+.contact-btn:hover {
+  background-color: #f0f2f2;
 }
 
 .tracker-actions {
-  padding: 25px;
   display: flex;
-  gap: 15px;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.btn {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.action-btn {
   flex: 1;
+  padding: 10px;
+  border: 1px solid #d5d9d9;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.btn.primary {
-  background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
-  color: white;
+.action-btn:hover {
+  background-color: #f0f2f2;
 }
 
-.btn.secondary {
-  background: #f0f0f0;
-  color: #636e72;
+.action-btn.primary {
+  background-color: #ff9900;
+  color: #131921;
+  border-color: #ff9900;
 }
 
-.btn:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+.action-btn.primary:hover {
+  background-color: #f7ca00;
 }
 
-.loading-spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-}
-
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #ff7e5f;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Responsive Design */
+/* Responsive design */
 @media (max-width: 768px) {
   .order-tracker {
-    padding: 10px;
+    padding: 20px;
   }
   
-  .status-indicators {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+  .tracker-header {
+    margin-bottom: 20px;
   }
   
-  .status-indicator {
-    flex: 0 0 calc(33.333% - 15px);
+  .tracker-title {
+    font-size: 20px;
   }
   
-  .driver-card {
+  .driver-info {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
+    text-align: center;
   }
   
-  .driver-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-  
-  .action-btn {
-    flex: 1;
+  .driver-contact {
     justify-content: center;
   }
   
   .tracker-actions {
     flex-direction: column;
   }
-  
-  .info-row {
-    flex-direction: column;
-    gap: 5px;
+}
+
+@media (max-width: 480px) {
+  .order-tracker {
+    padding: 15px;
   }
   
-  .info-label {
-    min-width: auto;
+  .tracker-title {
+    font-size: 18px;
+  }
+  
+  .action-btn {
+    width: 100%;
+    text-align: center;
   }
 }

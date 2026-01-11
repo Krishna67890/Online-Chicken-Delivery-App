@@ -1,0 +1,80 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Classic Crispy Chicken",
+      "description": "Our signature crispy fried chicken with perfect seasoning.",
+      "price": 12.99,
+      "category": "fried-chicken",
+      "image": "/images/chicken-classic.jpg",
+      "rating": 4.8,
+      "reviews": 124,
+      "popular": true,
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "Spicy Hot Wings",
+      "description": "Crispy chicken wings with our special spicy sauce.",
+      "price": 9.99,
+      "category": "wings",
+      "image": "/images/wings-spicy.jpg",
+      "rating": 4.7,
+      "reviews": 98,
+      "popular": true,
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "BBQ Glazed Drumsticks",
+      "description": "Tender drumsticks glazed with smoky BBQ sauce.",
+      "price": 10.99,
+      "category": "grilled-chicken",
+      "image": "/images/drumsticks-bbq.jpg",
+      "rating": 4.6,
+      "reviews": 76,
+      "popular": false,
+      "available": true
+    },
+    {
+      "id": 4,
+      "name": "Honey Garlic Chicken Breast",
+      "description": "Juicy chicken breast with sweet honey garlic glaze.",
+      "price": 13.99,
+      "category": "grilled-chicken",
+      "image": "/images/chicken-breast-honey.jpg",
+      "rating": 4.9,
+      "reviews": 142,
+      "popular": true,
+      "available": true
+    },
+    {
+      "id": 5,
+      "name": "Chicken Caesar Wrap",
+      "description": "Grilled chicken strips with romaine lettuce and parmesan.",
+      "price": 8.99,
+      "category": "sandwiches",
+      "image": "/images/wrap-caesar.jpg",
+      "rating": 4.5,
+      "reviews": 87,
+      "popular": false,
+      "available": true
+    },
+    {
+      "id": 6,
+      "name": "Nashville Hot Chicken Sandwich",
+      "description": "Spicy fried chicken on a brioche bun with pickles.",
+      "price": 11.49,
+      "category": "sandwiches",
+      "image": "/images/sandwich-hot.jpg",
+      "rating": 4.7,
+      "reviews": 112,
+      "popular": true,
+      "available": true
+    }
+  ],
+  "total": 6,
+  "page": 1,
+  "limit": 20,
+  "totalPages": 1
+}

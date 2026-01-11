@@ -1,0 +1,336 @@
+/* Amazon-style CSS for Admin Orders Management */
+
+.admin-orders {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 20px;
+  color: #0f1111;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-header {
+  background-color: #131921;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.admin-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.admin-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.admin-nav a:hover {
+  background-color: #4a5157;
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.filters {
+  background: white;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filter-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.filter-select, .filter-input {
+  padding: 8px 12px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.apply-filters-btn {
+  background-color: #ffd814;
+  color: #0f1111;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.apply-filters-btn:hover {
+  background-color: #f7ca00;
+}
+
+.orders-section {
+  background: white;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #0f1111;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.orders-table th {
+  background-color: #f0f2f2;
+  font-weight: bold;
+  color: #565959;
+}
+
+.order-id {
+  color: #0066c0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.order-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-pending {
+  background-color: #fff8e0;
+  color: #d18700;
+}
+
+.status-processing {
+  background-color: #e7f3ff;
+  color: #0066c0;
+}
+
+.status-shipped {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-delivered {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-cancelled {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.orders-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.action-btn {
+  background-color: #f0f2f2;
+  border: 1px solid #d5d9d9;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+}
+
+.action-btn:hover {
+  background-color: #e8e8e8;
+}
+
+.update-status-btn {
+  background-color: #ffd814;
+  color: #0f1111;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+}
+
+.update-status-btn:hover {
+  background-color: #f7ca00;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 5px;
+}
+
+.page-btn {
+  background-color: #f0f2f2;
+  border: 1px solid #d5d9d9;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.page-btn:hover {
+  background-color: #e8e8e8;
+}
+
+.page-btn.active {
+  background-color: #ffd814;
+  color: #0f1111;
+}
+
+.order-details-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.order-details-content {
+  background: white;
+  border-radius: 4px;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.order-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.order-details-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.close-details-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #565959;
+}
+
+.order-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-label {
+  font-size: 14px;
+  color: #565959;
+  margin-bottom: 3px;
+}
+
+.summary-value {
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.items-list {
+  margin-bottom: 20px;
+}
+
+.items-list h4 {
+  margin-bottom: 10px;
+  color: #0f1111;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-name {
+  color: #0f1111;
+}
+
+.item-price {
+  color: #b12704;
+  font-weight: bold;
+}
+
+.total-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  font-weight: bold;
+  font-size: 16px;
+}

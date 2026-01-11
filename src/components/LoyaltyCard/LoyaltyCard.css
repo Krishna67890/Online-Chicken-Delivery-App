@@ -1,0 +1,181 @@
+/* Loyalty Card Component Styles - Amazon-style */
+
+.loyalty-card {
+  background: linear-gradient(135deg, #131921 0%, #232f3e 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.loyalty-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,153,0,0.1) 0%, rgba(255,153,0,0) 70%);
+  z-index: 0;
+}
+
+.loyalty-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.loyalty-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.loyalty-icon {
+  font-size: 24px;
+}
+
+.loyalty-points {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.points-number {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ff9900;
+  margin: 0 0 5px 0;
+}
+
+.points-label {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.loyalty-progress {
+  background: rgba(255,255,255,0.1);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 20px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #ff9900, #ff6b00);
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #ccc;
+  font-size: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.loyalty-benefits {
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.benefits-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #ff9900;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.benefit-icon {
+  color: #ff9900;
+}
+
+.loyalty-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ff9900;
+  background: transparent;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: rgba(255,153,0,0.2);
+}
+
+.action-btn.primary {
+  background-color: #ff9900;
+  color: #131921;
+}
+
+.action-btn.primary:hover {
+  background-color: #f7ca00;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .loyalty-card {
+    padding: 20px;
+  }
+  
+  .points-number {
+    font-size: 32px;
+  }
+  
+  .loyalty-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .loyalty-card {
+    padding: 15px;
+  }
+  
+  .points-number {
+    font-size: 28px;
+  }
+  
+  .progress-labels {
+    font-size: 10px;
+  }
+}

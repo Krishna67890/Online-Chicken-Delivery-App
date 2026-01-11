@@ -2,7 +2,7 @@ import axios from 'axios';
 import { storageService } from '../storageService';
 import { setupInterceptors } from './interceptors';
 
-const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://api.chickendelivery.com/v1';
+const BASE_URL = '/api'; // Using local mock API instead of external API
 
 // Create axios instance with default config
 const apiClient = axios.create({

@@ -1,0 +1,45 @@
+/* Advanced Attractive CSS for Cart Icon Component */
+
+.cart-icon-wrapper {
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.cart-icon-wrapper:hover {
+  transform: scale(1.1);
+}
+
+.cart-icon {
+  font-size: 1.8rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff4757;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}

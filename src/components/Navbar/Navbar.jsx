@@ -51,7 +51,8 @@ const Navbar = ({ cartItemsCount, onCartClick }) => {
     if (onCartClick) {
       onCartClick();
     } else {
-      navigate('/cart');
+      // Navigate to orders page where cart functionality now resides
+      navigate('/orders');
     }
   };
 

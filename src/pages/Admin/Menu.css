@@ -1,0 +1,283 @@
+/* Amazon-style CSS for Admin Menu Management */
+
+.admin-menu {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 20px;
+  color: #0f1111;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-header {
+  background-color: #131921;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.admin-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.admin-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.admin-nav a:hover {
+  background-color: #4a5157;
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.add-item-btn {
+  background-color: #ffd814;
+  color: #0f1111;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.add-item-btn:hover {
+  background-color: #f7ca00;
+}
+
+.search-bar {
+  width: 300px;
+  padding: 8px 12px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.item-card {
+  background: white;
+  border-radius: 4px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.item-image {
+  width: 100%;
+  height: 150px;
+  background-color: #f0f2f2;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.item-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.item-info {
+  margin-bottom: 10px;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #0f1111;
+}
+
+.item-price {
+  color: #b12704;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.item-category {
+  color: #565959;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.item-description {
+  color: #565959;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s;
+}
+
+.edit-btn {
+  background-color: #e7f3ff;
+  color: #0066c0;
+}
+
+.edit-btn:hover {
+  background-color: #d5e9ff;
+}
+
+.delete-btn {
+  background-color: #ffd8bf;
+  color: #d12600;
+}
+
+.delete-btn:hover {
+  background-color: #ffcabf;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 4px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #565959;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #0f1111;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d5d9d9;
+  border-radius: 4px;
+  font-size: 14px;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.save-btn, .cancel-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.save-btn {
+  background-color: #ffd814;
+  color: #0f1111;
+}
+
+.save-btn:hover {
+  background-color: #f7ca00;
+}
+
+.cancel-btn {
+  background-color: #f0f2f2;
+  color: #0f1111;
+}
+
+.cancel-btn:hover {
+  background-color: #e8e8e8;
+}

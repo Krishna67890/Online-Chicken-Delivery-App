@@ -1,5 +1,5 @@
-import { api, buildUrl } from './api/apiClient';
-import { ENDPOINTS } from './api/endpoints';
+import { api } from './api/apiClient';
+import { ENDPOINTS, buildUrl } from './api/endpoints';
 import { analyticsService } from './analyticsService';
 
 export const orderService = {
@@ -32,6 +32,17 @@ export const orderService = {
     } catch (error) {
       console.error('Get order error:', error);
       throw error;
+    }
+  },
+
+  // Get user specific orders
+  async getUserOrders(userId) {
+    try {
+      const response = await api.get(ENDPOINTS.ORDERS.HISTORY, { params: { userId } });
+      return response.data;
+    } catch (error) {
+      console.error('Get user orders error:', error);
+      return []; // Return empty array on error to prevent crashes
     }
   },
 
