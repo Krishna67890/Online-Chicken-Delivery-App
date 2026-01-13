@@ -24,7 +24,7 @@ const FoodCard = ({
         <p className="item-description">{item.description}</p>
         
         <div className="price-container">
-          <span className="current-price">${item.price.toFixed(2)}</span>
+          <span className="current-price">₹{item.price.toFixed(2)}</span>
         </div>
 
         <div className="card-footer">

@@ -107,7 +107,7 @@ const Home = () => {
             id: `${catId}-${i}`,
             name: `${nameBase} ${i > data.names.length ? 'Ex' + i : ''}`,
             description: `Freshly prepared ${catId} selection with secret Matoshri campus spices.`,
-            price: (catId === 'sides' || catId === 'drinks') ? 4.99 + (i % 5) : 12.99 + (i % 15),
+            price: (catId === 'sides' || catId === 'drinks') ? 99 + (i % 100) : 249 + (i % 200),
             category: catId,
             image: data.image,
             rating: 4.2 + (Math.random() * 0.8)
